@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="popup.css">
+		<script type="text/javascript" src="popup.js"></script>
+	</head>
+	<body>
+		<input id="close" type="button" value="Close" autofocus>
+		<form id="options">
+			<label>Auto redirect TXT to HTML? <input name="rdrct" type="checkbox"></label>
+			<label>Restyle on page load? <input name="styl" type="checkbox"></label>
+			<hr>
+			<label title="Remove chunks of whitespace and page seperators">Continuous presentation?&nbsp;<input name="continuous" type="checkbox"></label>
+			<label>Fuzzy border around page body? <input name="fzzy" type="checkbox"></label>
+			<label>Font size: <input name="fntsz" type="range" min="8" max="32" step="1"></label>
+			<label>Page background color</label>
+			<fieldset id="htmlbg">
+				<input type="button" value="Modify">
+				<label>Red:   <input name="htmlbgr" type="range" min="0" max="255" step="1"></label>
+				<label>Green: <input name="htmlbgg" type="range" min="0" max="255" step="1"></label>
+				<label>Blue:  <input name="htmlbgb" type="range" min="0" max="255" step="1"></label>
+			</fieldset>
+			<label>Page body color</label>
+			<fieldset id="bodybg">
+				<input type="button" value="Modify">
+				<label>Red:   <input name="bodybgr" type="range" min="0" max="255" step="1"></label>
+				<label>Green: <input name="bodybgg" type="range" min="0" max="255" step="1"></label>
+				<label>Blue:  <input name="bodybgb" type="range" min="0" max="255" step="1"></label>
+			</fieldset>
+			<label>Text selection color</label>
+			<fieldset id="slctn">
+				<input type="button" value="Modify">
+				<label>Red:   <input name="slctnr" type="range" min="0" max="255" step="1"></label>
+				<label>Green: <input name="slctng" type="range" min="0" max="255" step="1"></label>
+				<label>Blue:  <input name="slctnb" type="range" min="0" max="255" step="1"></label>
+			</fieldset>
+			<label>Normal text color</label>
+			<fieldset id="nrml">
+				<input type="button" value="Modify">
+				<label>Red:   <input name="nrmlr" type="range" min="0" max="255" step="1"></label>
+				<label>Green: <input name="nrmlg" type="range" min="0" max="255" step="1"></label>
+				<label>Blue:  <input name="nrmlb" type="range" min="0" max="255" step="1"></label>
+			</fieldset>
+			<label>Light text color</label>
+			<fieldset id="lght">
+				<input type="button" value="Modify">
+				<label>Red:   <input name="lghtr" type="range" min="0" max="255" step="1"></label>
+				<label>Green: <input name="lghtg" type="range" min="0" max="255" step="1"></label>
+				<label>Blue:  <input name="lghtb" type="range" min="0" max="255" step="1"></label>
+			</fieldset>
+			<label>Inactive, unvisited link color</label>
+			<fieldset id="lnk">
+				<input type="button" value="Modify">
+				<label>Red:   <input name="lnkr" type="range" min="0" max="255" step="1"></label>
+				<label>Green: <input name="lnkg" type="range" min="0" max="255" step="1"></label>
+				<label>Blue:  <input name="lnkb" type="range" min="0" max="255" step="1"></label>
+			</fieldset>
+			<label>Active, visited link color</label>
+			<fieldset id="vha">
+				<input type="button" value="Modify">
+				<label>Red:   <input name="vhar" type="range" min="0" max="255" step="1"></label>
+				<label>Green: <input name="vhag" type="range" min="0" max="255" step="1"></label>
+				<label>Blue:  <input name="vhab" type="range" min="0" max="255" step="1"></label>
+			</fieldset>
+			<label>Underline links?</label>
+			<fieldset id="uls">
+				<label>None: <input id="none" name="ul" type="radio" value="none"></label>
+				<label> Solid: <input id="solid" name="ul" type="radio" value="solid"></label>
+				<label> Dashed: <input id="dashed" name="ul" type="radio" value="dashed"></label>
+				<label> Dotted: <input id="dotted" name="ul" type="radio" value="dotted"></label>
+			</fieldset>
+		</form>
+	</body>
+</html>
