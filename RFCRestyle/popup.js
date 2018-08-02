@@ -6,41 +6,13 @@ W.addEventListener( "DOMContentLoaded", () => {
 		const o = D.getElementById( "options" ),
 			save = () => {
 				chrome.storage.local.set( {
-					htmlbg: {
-						r: o.htmlbgr.value,
-						g: o.htmlbgg.value,
-						b: o.htmlbgb.value
-					},
-					bodybg: {
-						r: o.bodybgr.value,
-						g: o.bodybgg.value,
-						b: o.bodybgb.value
-					},
-					slctn: {
-						r: o.slctnr.value,
-						g: o.slctng.value,
-						b: o.slctnb.value
-					},
-					nrml: {
-						r: o.nrmlr.value,
-						g: o.nrmlg.value,
-						b: o.nrmlb.value
-					},
-					lght: {
-						r: o.lghtr.value,
-						g: o.lghtg.value,
-						b: o.lghtb.value
-					},
-					lnk: {
-						r: o.lnkr.value,
-						g: o.lnkg.value,
-						b: o.lnkb.value
-					},
-					vha: {
-						r: o.vhar.value,
-						g: o.vhag.value,
-						b: o.vhab.value
-					},
+					htmlbg: { r: o.htmlbgr.value, g: o.htmlbgg.value, b: o.htmlbgb.value },
+					bodybg: { r: o.bodybgr.value, g: o.bodybgg.value, b: o.bodybgb.value },
+					slctn: { r: o.slctnr.value, g: o.slctng.value, b: o.slctnb.value },
+					nrml: { r: o.nrmlr.value, g: o.nrmlg.value, b: o.nrmlb.value },
+					lght: { r: o.lghtr.value, g: o.lghtg.value, b: o.lghtb.value },
+					lnk: { r: o.lnkr.value, g: o.lnkg.value, b: o.lnkb.value },
+					vha: { r: o.vhar.value, g: o.vhag.value, b: o.vhab.value },
 					ul: Array.from( D.querySelectorAll( "#uls input" ) ).find( n => n.checked ).value,
 					continuous: o.continuous.checked.valueOf(),
 					rdrct: o.rdrct.checked.valueOf(),
