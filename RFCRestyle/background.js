@@ -30,41 +30,13 @@ chrome.extension.onConnect.addListener( port => {
 			setDef( "fntsz", 16 );
 		} else {
 			os = {
-				bodybg: {
-					r: 224,
-					g: 224,
-					b: 224
-				},
-				slctn: {
-					r: 192,
-					g: 192,
-					b: 192
-				},
-				lght: {
-					r: 160,
-					g: 160,
-					b: 160
-				},
-				htmlbg: {
-					r: 64,
-					g: 64,
-					b: 64
-				},
-				nrml: {
-					r: 64,
-					g: 64,
-					b: 64
-				},
-				lnk: {
-					r: 0,
-					g: 64,
-					b: 192
-				},
-				vha: {
-					r: 0,
-					g: 145,
-					b: 35
-				},
+				bodybg: { r: 224, g: 224, b: 224 },
+				slctn: { r: 192, g: 192, b: 192 },
+				lght: { r: 160, g: 160, b: 160 },
+				htmlbg: { r: 64, g: 64, b: 64 },
+				nrml: { r: 64, g: 64, b: 64 },
+				lnk: { r: 0, g: 64, b: 192 },
+				vha: { r: 0, g: 145, b: 35 },
 				continuous: true,
 				rdrct: false,
 				fzzy: true,
