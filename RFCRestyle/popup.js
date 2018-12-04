@@ -56,7 +56,7 @@ chrome.runtime.connect( { name: "popup" } );
 		l = U( "optgroup" );
 		l[ H ] = "Google Fonts";
 		j[ R ]( m => {
-			l[ P ]( U( m, !0 ) )
+			l[ P ]( U( m, !0 ) );
 		} );
 	} else {
 		l = U( j, !0 );
