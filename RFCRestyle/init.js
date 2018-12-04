@@ -214,7 +214,7 @@
 						E.clear();
 					}
 				} else {
-					G( bb => AW( bb ) )
+					G( bb => AW( bb ) );
 				}
 			}
 		} );
