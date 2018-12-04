@@ -1,10 +1,10 @@
 {
 	"manifest_version": 2,
 	"name": "RFCRestyle",
-	"description": "Adjust the size, colors and layout of HTML ietf RFCs for easier reading, navigation (Fixed position ToC) and better accessibility.",
-	"version": "1.2.3.1",
+	"description": "Control the aesthetics and improve the navigability of HTML ietf.org RFC and Draft docs. Optional automatic redirects from TXT docs.",
+	"version": "2.0.1",
 	"offline_enabled": false,
-	"permissions": [
+	"permissions": [ 
 		"tabs",
 		"storage",
 		"https://*.ietf.org/"
@@ -24,18 +24,23 @@
 		"128": "icon128.png"
 	},
 	"background": {
-		"scripts": [ "background.js" ]
+		"scripts": [
+			"background.js"
+		],
+		"persistent": false
 	},
 	"content_scripts": [ {
-		"matches": [
-			"https://www.ietf.org/rfc/rfc*",
-			"https://www.ietf.org/id/draft-*",
-			"https://tools.ietf.org/rfc/rfc*",
-			"https://tools.ietf.org/id/draft-*",
-			"https://tools.ietf.org/html/rfc*",
-			"https://tools.ietf.org/html/draft-*"
-		],
-		"js": [ "init.js" ],
-		"run_at": "document_end"
-	} ]
+			"matches": [
+				"https://www.ietf.org/rfc/rfc*",
+				"https://www.ietf.org/id/draft-*",
+				"https://tools.ietf.org/rfc/rfc*",
+				"https://tools.ietf.org/id/draft-*",
+				"https://tools.ietf.org/html/rfc*",
+				"https://tools.ietf.org/html/draft-*"
+			],
+			"js": [
+				"init.js"
+			]
+		}
+	]
 }
