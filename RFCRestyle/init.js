@@ -161,7 +161,7 @@
 				}
 			} );
 			if ( typeof aq.fzzy !== "number" ) {
-				aq.fzzy = 8
+				aq.fzzy = 8;
 			}
 			return aq;
 		};
