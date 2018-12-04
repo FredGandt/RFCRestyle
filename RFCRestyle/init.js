@@ -211,7 +211,7 @@
 					if ( aw.sync.newValue ) {
 						G( ba => H( ba ) );
 					} else {
-						E.clear()'
+						E.clear();
 					}
 				} else {
 					G( bb => AW( bb ) )
