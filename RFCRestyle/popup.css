@@ -1,76 +1,67 @@
-html {
-	font-size: 14px;
-}
 body {
-	color: #444;
-	margin: 1rem;
-	font-size: 1rem;
-	font-family: Arial, sans-serif;
+	padding: 0 .5rem;
 }
-label {
-	display: block;
-	white-space: pre;
-	margin-top: .2rem;
+.r {
+	float: right;
+}
+hr {
+	border-style: solid none none!important;
+	margin-bottom: .2rem;
 }
 input {
-	color: #444;
-}
-input[type="radio"],
-input[type="checkbox"] {
-	margin: 0;
+	margin: 0.3rem 0 0 .2rem;
 	vertical-align: -2px;
 }
-input[type="range"] {
+input[type="button"] {
+	padding: .4rem .8rem;
+	float: right;
 	margin: 0;
-	width: 18rem;
+}
+input[type="color"] {
+	background: transparent;
 	vertical-align: middle;
+	height: 2rem;
+	padding :0;
+	border: 0;
+	margin: 0;
 }
-fieldset {
-	padding: 0;
-	font-size: .9rem;
-	border-radius: .5rem;
-	margin: .2rem 0 .5rem;
-	border: 0 inset rgba( 183, 183, 183, 0.66 );
-	font-family: Inconsolata, Consolas, monospace;
+input[type="range"] {
+	vertical-align: -.3rem;
+	width: 12rem;
 }
-fieldset label {
-	display: none;
+label:not(:last-child) input[type="radio"], a {
+	margin-right: 1rem;
 }
-#options.htmlbg #htmlbg,
-#options.bodybg #bodybg,
-#options.slctn #slctn,
-#options.nrml #nrml,
-#options.lght #lght,
-#options.lnk #lnk,
-#options.vha #vha {
-	padding: .5rem;
-	border-width: .15rem;
+a {
+	cursor: pointer;
 }
-#options.htmlbg #htmlbg label,
-#options.bodybg #bodybg label,
-#options.slctn #slctn label,
-#options.nrml #nrml label,
-#options.lght #lght label,
-#options.lnk #lnk label,
-#options.vha #vha label {
+input[name="lnk"] {
+	margin-bottom: .2rem;
+}
+select {
+	margin: .3rem 0 .3rem .2rem;
+}
+label {
+	white-space: nowrap;
 	display: block;
 }
-#options.htmlbg #htmlbg input[type="button"],
-#options.bodybg #bodybg input[type="button"],
-#options.slctn #slctn input[type="button"],
-#options.nrml #nrml input[type="button"],
-#options.lght #lght input[type="button"],
-#options.lnk #lnk input[type="button"],
-#options.vha #vha input[type="button"] {
-	display: none;
+hr, fieldset {
+	border: 1px solid #999;
 }
-#uls {
-	padding: .5rem;
-	border-width: .15rem;
+fieldset {
+	border-radius: .2rem;
+	padding-top: .1rem;
+	margin: 0 0 .3rem;
 }
-#uls label {
+fieldset[name="uls"] {
+	margin-top: .4rem;
+}
+fieldset[name="prfls"]+label,
+fieldset[name="prfls"] label,
+fieldset[name="uls"] label {
 	display: inline;
 }
-#close {
-	float: right;
+fieldset[name="stylrs"] {
+	padding: 0;
+	border: 0;
 }
