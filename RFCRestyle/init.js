@@ -51,7 +51,8 @@
 					K( { f: "https://tools.ietf.org/html/" + L[ 1 ] } );
 				}
 			} else if ( e.styl ) {
-				let g = "https://fonts.googleapis.com/css?family=" + e.fnt.replace( / /g, "+" ) + ":400,700&amp;subset=" + [ AT, "greek", "latin", "greek," + AT ].join( "-ext," ),
+				let g = "https://fonts.googleapis.com/css?family=" + e.fnt.replace( / /g, "+" ) +
+						":400,700&amp;subset=" + [ AT, "greek", "latin", "greek," + AT ].join( "-ext," ),
 					h = e.fzzy / 10 + "rem ",
 					i = e.fzzy / 20 + "rem",
 					j = k => A[ O + P ]( k || "button" );
@@ -75,7 +76,9 @@
 					"j:0 0 0 " + i,
 					"k:.1rem " + e.ul,
 					"l:" + i,
-					"m:" + h, "n:" + e.fntsz + "px", "o:" + ( e.lnkwght ? "700" : "400" )
+					"m:" + h,
+					"n:" + e.fntsz + "px",
+					"o:" + ( e.lnkwght ? "700" : "400" )
 				].join( ";--" ) + "}.whitespace,a.invisible,.grey,.grey a:link,.grey a:visited{" +
 					( e.continuous ? "display:none}pre{margin:0" : "color:" + e.lght +
 					"}pre{margin:.4rem 0 0 0;border-top:1px dotted " + e.lght ) + "}";
