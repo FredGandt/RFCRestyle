@@ -132,7 +132,7 @@
 								ad = BA( ".selflink", ac ),
 								ae = ac[ "first" + C + E ],
 								af = ae[ AD ];
-							if ( ad ) o( ad[ U ][ B ], ad[ Q ] );
+							if ( ad ) o( ad[ U ][ B ], ad[ AA ] );
 							if ( ac[ G ].contains( "newpage" ) ) {
 								if ( s( af ) && af[ B ].length === 1 ) ac[ W + E ]( af );
 								u( ae[ "next" + C + H ][ AD ], /(^\n+|\n+$)/g );
