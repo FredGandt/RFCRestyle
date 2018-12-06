@@ -1,5 +1,6 @@
 "use strict";
-const A = document,
+const 
+	A = document,
 	B = "input",
 	C = "radio",
 	D = "name",
@@ -19,9 +20,7 @@ const A = document,
 	T = a => A[ Q ]( a ),
 	U =( b, c ) => {
 		let d = A.createElement( c ? "option" : b );
-		if ( c ) {
-			d.textContent = b;
-		}
+		if ( c ) d.textContent = b;
 		return d;
 	},
 	V = ( e, f ) => ~f.indexOf( e[ E ] ),
@@ -36,7 +35,7 @@ const A = document,
 			W[ n ][ typeof i === "boolean" ? G : F ] = i;
 		} );
 	};
-chrome.runtime.connect( { name: "popup" } );
+chrome.runtime.connect( { name: "p" } );
 [ "System default", "Lucida Console", "Consolas", "Courier",
 	[ "Inconsolata",
 		"Cousine",
@@ -64,9 +63,7 @@ chrome.runtime.connect( { name: "popup" } );
 	}
 	W.fnt[ P ]( l );
 } );
-[ [ "none", "solid", "dashed", "dotted" ],
-	[ "Foo", "Bar", "Baz", "Qux", "Quux" ]
-][ R ]( ( n, o ) => {
+[ [ "none", "solid", "dashed", "dotted" ], [ "Foo", "Bar", "Baz", "Qux", "Quux" ] ][ R ]( ( n, o ) => {
 	n[ R ]( p => {
 		let q = o ? K : "ul",
 			r = U( H ),
@@ -91,9 +88,7 @@ S.get( u => {
 		let y = w[ K ];
 		u[ K ] = y;
 		if ( v.target[ D ] === K ) {
-			if ( !u[ L ][ y ] ) {
-				return;
-			}
+			if ( !u[ L ][ y ] ) return;
 			Y( u );
 		} else {
 			u[ L ][ y ] = w;
