@@ -1,21 +1,20 @@
 "use strict";
-function pop( p ) {
-	p.onDisconnect.removeListener( pop );
-	chrome.storage.local.get( s => {
-		if ( s.sync ) chrome.storage.sync.set( s );
+function s( f ) {
+	chrome.storage.local.get( a => {
+		if ( a.sync ) chrome.storage.sync.set( a );
+		if ( typeof f === "function" ) f();
 	} );
 }
 chrome.runtime.onConnect.addListener( p => {
-	if ( p.name === "i" ) {
-		chrome.pageAction.show( p.sender.tab.id );
-	} else p.onDisconnect.addListener( pop );
+	if ( p.name === "i" ) chrome.pageAction.show( p.sender.tab.id );
+	else p.onDisconnect.addListener( s );
 } );
-chrome.runtime.onMessage.addListener( ( msg, msgSndr ) => {
-	switch ( Object.keys( msg )[ 0 ] ) {
-		case "r": chrome.tabs.reload();
+chrome.runtime.onMessage.addListener( ( a, b ) => {
+	switch ( Object.keys( a )[ 0 ] ) {
+		case "c": chrome.tabs.insertCSS( b.tab.id, { file: "init.css" } );
 			break;
-		case "c": chrome.tabs.insertCSS( msgSndr.tab.id, { file: "init.css" } );
+		case "u": s( ( c => chrome.tabs.update( b.tab.id, { url: a.u } ) ) );
 			break;
-		default: chrome.tabs.update( msgSndr.tab.id, { url: msg.u } );
+		default: s( ( c => chrome.tabs.reload() ) );
 	}
 } );
