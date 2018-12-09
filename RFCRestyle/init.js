@@ -1,6 +1,7 @@
 "use strict";
 ( function( A ) {
-	let _r = !1;
+	let _r = !1,
+		_l = !0;
 	const
 		 B = "textContent",
 		 C = "Element",
@@ -13,7 +14,6 @@
 		 J = chrome,
 		 K = J.storage,
 		 L = K.sync,
-		 M = L.get,
 		 N = K.local,
 		 O = N.get,
 		 P = J.runtime,
@@ -36,8 +36,6 @@
 		AG = "previous",
 		AH = "Listener",
 		AI = "addEvent" + AH,
-		AJ = "cyrillic",
-		AK = "#404040",
 		AL = /^\/(?:id|rfc)\/(rfc(?:[0-9]+)|draft-(?:[a-zA-Z0-9\-]+))(?:\.txt)?$/.exec( location.pathname ),
 		BA = ( a, b ) => ( b || A )[ AB ]( a ),
 		BB = ( a, b ) => Object.getOwnPropertyNames( a ).forEach( b ),
@@ -46,7 +44,7 @@
 			if ( !!AL ) {
 				if ( a.rdrct ) Q( { u: "https://tools.ietf.org/html/" + AL[ 1 ] } );
 			} else if ( a.styl ) {
-				let b = "https://fonts.googleapis.com/css?family=" + a.fnt.replace( / /g, "+" ) + ":400,700&amp;subset=" + [ AJ, "greek", "latin", "greek," + AJ ].join( "-ext," ),
+				let b = "https://fonts.googleapis.com/css?family=" + a.fnt.replace( / /g, "+" ) + ":400,700&amp;subset=" + [ "cyrillic", "greek", "latin", "greek,cyrillic" ].join( "-ext," ),
 					c = a.fzzy / 10 + "rem ",
 					d = a.fzzy / 20 + "rem",
 					e = f => A[ X + C ]( f || "button" );
@@ -151,50 +149,59 @@
 			} );
 			if ( typeof a.fzzy !== "number" ) a.fzzy = 8;
 			return a;
-		};
-	P.connect( { name: "i" } );
-	M( a => {
-		if ( a.sync ) {
-			BC( a );
-			N.set( a );
-		} else {
-			O( b => {
-				BC( b = b.prfl ? b : {
-					sync: !1,
-					prfl: "Foo",
-					prfls: {
-						Foo: Object.assign( {
+		},
+		BF = ( a, b ) => {
+			_l = !1;
+			( b || N ).set( a, c => _l = !0 );
+		},
+		BG = a => {
+			L.get( b => {
+				if ( b.sync ) {
+					BC( b );
+					BF( b );
+				} else if ( a ) {
+					O( c => {
+						BC( c = c.prfl ? c : {
+							sync: !a,
 							prfl: "Foo",
-							fnt: "Inconsolata",
-							htmlbg: AK,
-							bodybg: "#e0e0e0",
-							slctn: "#c0c0c0",
-							nrml: AK,
-							lght: "#a0a0a0",
-							lnk: "#0040c0",
-							vha: "#009123",
-							continuous: !0,
-							lnkwght: !0,
-							rdrct: !1,
-							styl: !0,
-							ul: "none",
-							fntsz: 16,
-							fzzy: 8
-						}, BE( b ) )
-					}
-				} );
-				N.set( b );
+							prfls: {
+								Foo: Object.assign( {
+									prfl: "Foo",
+									fnt: "Inconsolata",
+									htmlbg: "#404040",
+									bodybg: "#e0e0e0",
+									slctn: "#c0c0c0",
+									nrml: "#404040",
+									lght: "#a0a0a0",
+									lnk: "#0040c0",
+									vha: "#009123",
+									continuous: a,
+									lnkwght: a,
+									rdrct: !a,
+									styl: a,
+									ul: "none",
+									fntsz: 16,
+									fzzy: 8
+								}, BE( c ) )
+							}
+						} );
+						BF( c );
+					} );
+				}
 			} );
+		};
+	K.onChanged[ "add" + AH ]( ( a, b ) => {
+		if ( _l ) {
+			if ( b === "sync" ) {
+				if ( !a.sync ) BG();
+			} else {
+				if ( a.sync ) {
+					if ( a.sync.newValue ) O( c => BF( c, L ) );
+					else L.clear();
+				} else O( d => BC( d ) );
+			}
 		}
-		K.onChanged[ "add" + AH ]( ( c, d ) => {
-			if ( d === "sync" ) {
-				M( e => {
-					if ( e.sync && !c.sync ) O( f => BC( f ) );
-				} );
-			} else if ( c.sync ) {
-				if ( c.sync.newValue ) O( g => L.set( g ) );
-				else L.clear();
-			} else O( h => BC( h ) );
-		} );
 	} );
+	P.connect( { name: "i" } );
+	BG( !0 );
 } ( document ) );
