@@ -159,7 +159,7 @@
           BE( b );
         } else if ( a ) {
           O( c => {
-            BB( c = c.prfl ? c : {
+            BB( c = c.prfl ? Object.assign( c, { bcp: a } ) : {
               sync: !a,
               prfl: "Foo",
               prfls: {
@@ -177,6 +177,7 @@
                   lnkwght: a,
                   rdrct: !a,
                   styl: a,
+                  bcp: a,
                   ul: "none",
                   fntsz: 16,
                   fzzy: 8

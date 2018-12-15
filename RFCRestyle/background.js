@@ -15,6 +15,11 @@ chrome.runtime.onMessage.addListener( ( a, b ) => {
       break;
     case "u": s( ( c => chrome.tabs.update( b.tab.id, { url: a.u } ) ) );
       break;
+    case "nt": a.nt.forEach( ( u, i ) => {
+        if ( !i ) chrome.tabs.update( b.tab.id, { url: u } );
+        else chrome.tabs.create( { url: u, active: !1 } );
+      } );
+      break;
     default: s( ( c => chrome.tabs.reload() ) );
   }
 } );
