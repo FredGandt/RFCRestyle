@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "RFCRestyle",
   "description": "Control the aesthetics and improve the navigability of HTML ietf.org RFC and Draft docs. Optional automatic redirects from TXT docs.",
-  "version": "2.1",
+  "version": "2.1.1",
   "offline_enabled": false,
   "permissions": [ 
     "tabs",

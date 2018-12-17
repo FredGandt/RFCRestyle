@@ -4,9 +4,19 @@ body {
 .r {
   float: right;
 }
+.r + .r {
+  padding-bottom: .4rem;
+}
+.a {
+  padding-top: .3rem;
+}
+.d {
+  display: inline-block;
+}
 hr {
   border-style: solid none none!important;
   margin-bottom: .2rem;
+  clear: both;
 }
 input {
   margin: 0.3rem 0 0 .2rem;
@@ -35,7 +45,7 @@ label:not(:last-child) input[type="radio"], a {
 a {
   cursor: pointer;
 }
-input[name="lnk"] {
+[name="lnk"] {
   margin-bottom: .2rem;
 }
 select {
@@ -53,13 +63,13 @@ fieldset {
   padding-top: .1rem;
   margin: 0 0 .3rem;
 }
-fieldset[name="uls"] {
-  margin-top: .4rem;
-}
-fieldset[name="prfls"] + label, fieldset[name="prfls"] label, fieldset[name="uls"] label {
+[name="prfls"] + label, [name="prfls"] label, [name="uls"] label {
   display: inline;
 }
-fieldset[name="stylrs"] {
+[name="prfls"] {
+  margin-bottom: .2rem;
+}
+[name="stylrs"] {
   padding: 0;
   border: 0;
 }

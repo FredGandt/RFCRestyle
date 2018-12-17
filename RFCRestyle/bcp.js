@@ -14,15 +14,9 @@ chrome.storage.local.get( s => {
     x = !0;
   if ( z ) x = s.prfls[ z ].bcp;
   if ( M.length > 1 ) {
-    if ( x ) {
-      S( { nt: M.map( u => u[ R ]( RE, U + "$2" ) ) } );
-    } else {
-      P[ I ] = P[ I ][ R ]( /\]\n/, "\n " + M.map( u => u[ R ]( RE, H + "RFC $2</a>" ) ).join( ", " ) + "]\n" );
-    }
-  } else if ( x ) {
-    S( { nt: [ U + RE.exec( C[ I ] )[ 2 ] ] } );
-  } else {
-    C[ I ] = C[ I ][ R ]( RE, "\n" + H + "$1</a> " );
-  }
+    if ( x ) S( { nt: M.map( u => u[ R ]( RE, U + "$2" ) ) } );
+    else P[ I ] = P[ I ][ R ]( /\]\n/, "\n " + M.map( u => u[ R ]( RE, H + "RFC $2</a>" ) ).join( ", " ) + "]\n" );
+  } else if ( x ) S( { nt: [ U + RE.exec( C[ I ] )[ 2 ] ] } );
+  else C[ I ] = C[ I ][ R ]( RE, "\n" + H + "$1</a> " );
 } );
 C.style.margin = "0 auto";

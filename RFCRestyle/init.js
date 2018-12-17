@@ -30,6 +30,7 @@
      Z = "accesskey",
     AA = "insertBefore",
     AB = /^\/(?:id|rfc)\/(rfc(?:[0-9]+)|draft-(?:[a-zA-Z0-9\-]+))(?:\.txt)?$/.exec( location.pathname ),
+    BZ = ( a, b ) => Object.getOwnPropertyNames( a )[ U ]( b ),
     BA = ( a, b, c ) => ( c || A )[ "querySelector" + ( b ? "All" : "" ) ]( a ),
     BB = a => {
       a = a.prfls[ a.prfl ];
@@ -141,9 +142,9 @@
     },
     BC = a => a.toString( 16 ).padStart( 2, "0" ),
     BD = a => {
-      Object.getOwnPropertyNames( a )[ U ]( b => {
+      BZ( a, b => {
         let c = a[ b ];
-        if ( typeof c === "object" ) c = "#" + BC( c.r ) + BC( c.g ) + BC( c.b );
+        if ( typeof c === "object" ) a[ b ] = "#" + BC( c.r ) + BC( c.g ) + BC( c.b );
       } );
       if ( typeof a.fzzy !== "number" ) a.fzzy = 8;
       return a;
@@ -152,14 +153,38 @@
       _l = !1;
       ( b || N ).set( a, c => _l = !0 );
     },
+    BY = a => {
+      _l = !1;
+      a.clear( b => _l = !0 );
+    },
+    BX = ( a, b ) => {
+      if ( a.ul ) {
+        BY( N );
+        BZ( a.prfls, c => {
+          a.prfls[ c ] = Object.assign( { bcp: !0 }, a.prfls[ c ] );
+        } );
+        a = {
+          sync: a.sync,
+          prfl: a.prfl,
+          prfls: a.prfls
+        }
+        if ( b ) {
+          BY( L );
+          BE( a, L );
+        }
+      }
+      return a;
+    },
     BF = a => {
       L.get( b => {
         if ( b.sync ) {
+          b = BX( b, !0 );
           BB( b );
           BE( b );
         } else if ( a ) {
           O( c => {
-            BB( c = c.prfl ? Object.assign( c, { bcp: a } ) : {
+            c = BX( c );
+            BB( c = c.prfl ? c : {
               sync: !a,
               prfl: "Foo",
               prfls: {
@@ -196,7 +221,7 @@
       } else {
         if ( a.sync ) {
           if ( a.sync.newValue ) O( c => BE( c, L ) );
-          else L.clear();
+          else BY( L );
         } else O( d => BB( d ) );
       }
     }
