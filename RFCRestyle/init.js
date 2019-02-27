@@ -16,9 +16,8 @@
 		 L = K.sync,
 		 M = "match",
 		 N = K.local,
-		 O = N.get,
 		 P = J.runtime,
-		 Q = P.sendMessage,
+		 Q = "sendMessage",
 		 R = "Attribute",
 		 S = "set" + R,
 		 T = "parent",
@@ -35,7 +34,7 @@
 		BB = a => {
 			a = a.prfls[ a.prfl ];
 			if ( !!AB ) {
-				if ( a.rdrct ) Q( { u: "https://tools.ietf.org/html/" + AB[ 1 ] } );
+				if ( a.rdrct ) P[ Q ]( { u: "https://tools.ietf.org/html/" + AB[ 1 ] } );
 			} else if ( a.styl ) {
 				let b = "https://fonts.googleapis.com/css?family=" + a.fnt.replace( / /g, "+" ) + ":400,700&amp;subset=" + [ "cyrillic", "greek", "latin", "greek,cyrillic" ].join( "-ext," ),
 					c = a.fzzy / 10 + "rem ",
@@ -98,7 +97,7 @@
 								v[ T + "Node" ][ "replace" + E ]( x, v );
 							}
 						};
-					Q( { c: !0 }, () => {
+					P[ Q ]( { c: !0 }, () => {
 						h[ S ]( D, m[ "get" + R ]( D ) );
 						h.title = m.title;
 						l.innerHTML = BA( "script" )[ B ][ M ]( /Colou?r legend[^"]+/ );
@@ -138,7 +137,7 @@
 					} );
 					_r = !0;
 				}
-			} else if ( _r ) Q( { r: !0 } );
+			} else if ( _r ) P[ Q ]( { r: !0 } );
 		},
 		BC = a => a.toString( 16 ).padStart( 2, "0" ),
 		BD = a => {
@@ -180,7 +179,7 @@
 					BB( b );
 					BE( b );
 				} else if ( a ) {
-					O( c => {
+					N.get( c => {
 						c = BX( c );
 						BB( c = c.prfl ? c : {
 							sync: !a,
@@ -218,9 +217,9 @@
 				if ( !a.sync ) BF();
 			} else {
 				if ( a.sync ) {
-					if ( a.sync.newValue ) O( c => BE( c, L ) );
+					if ( a.sync.newValue ) N.get( c => BE( c, L ) );
 					else BY( L );
-				} else O( d => BB( d ) );
+				} else N.get( d => BB( d ) );
 			}
 		}
 	} );
