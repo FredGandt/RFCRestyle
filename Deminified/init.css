@@ -98,7 +98,7 @@ a.invisible, #legend {
 	background: var(--d);
 }
 #toc {
-	max-width: calc((100vw - 72ch - 1rem)/2);
+	max-width: calc((100vw - 72ch - 2rem)/2);
 	min-width: calc(27ch + 2rem);
 	border-radius: var(--j);
 	padding: .2rem 0 0 1rem;

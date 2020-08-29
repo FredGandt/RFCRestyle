@@ -43,7 +43,8 @@
 					"o:" + ( store.lnkwght ? "700" : "400" )
 				].join( ";--" ) + "}.whitespace,.grey,.grey a:link,.grey a:visited{" +
 					( store.continuous ? "display:none}.x{margin-top:1rem}pre{margin:0" : "color:" +
-					store.lght + "}pre{margin:.4rem 0 0 0;border-top:1px dotted " + store.lght ) + "}";
+					store.lght + "}pre{margin:.4rem 0 0 0;border-top:1px dotted " + store.lght ) + "}" +
+					( store.kto ? "#toc{padding-bottom:.8rem;height:auto}" : "" );
 				if ( !restyled ) {
 					let legend_btn = DOC.createElement( "button" ),
 						toc_btn = DOC.createElement( "button" ),
@@ -191,6 +192,7 @@
 									lnkwght: true,
 									rdrct: false,
 									styl: true,
+									kto: false,
 									bcp: true,
 									ul: "none",
 									fntsz: 16,
