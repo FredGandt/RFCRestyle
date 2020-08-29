@@ -9,6 +9,11 @@ An open source Chrome extension, first published on the Chrome webstore in early
 Via the Chrome Web Store at https://chrome.google.com/webstore/detail/rfcrestyle/babdjpjkdmdppnlgjlpgiknmbdblmdbd
 
 ## Change-Log (latest first):
+* August 29, 2020 - Version 3.0.0
+  * Added the option to keep the Table of Contents open all the time per user request made on the Chrome Web Store.
+  * Slightly increased the ToC's clearence aside the body content.
+  * Jumped to v3 from v2.3 to fix versioning error.
+
 * July 24, 2019 - Version 2.30
   * Removed "tabs" permission statement in manifest.
 
@@ -79,7 +84,7 @@ Via the Chrome Web Store at https://chrome.google.com/webstore/detail/rfcrestyle
   * A few minor improvements to the code while working to create an unminified package to publish somewhere for open-source use.
 
 * August 18, 2017 - Version 1.2.2.0
-  * Bug fix; thanks to user feedback via the "support" tab on the webstore listing :-)
+  * Bug fix; thanks to user feedback via the "support" tab on the Chrome Web Store listing :-)
 
 * May 6, 2017 - Version 1.2.1.5
   * Fixed inability to disable auto redirect from TXT to HTML docs.
