@@ -65,7 +65,8 @@
 					"o:" + ( a.lnkwght ? "700" : "400" )
 				].join( ";--" ) + "}.whitespace,.grey,.grey a:link,.grey a:visited{" +
 					( a.continuous ? "display:none}.x{margin-top:1rem}pre{margin:0" : "color:" +
-					a.lght + "}pre{margin:.4rem 0 0 0;border-top:1px dotted " + a.lght ) + "}";
+					a.lght + "}pre{margin:.4rem 0 0 0;border-top:1px dotted " + a.lght ) + "}" +
+					( a.kto ? "#toc{padding-bottom:.8rem;height:auto}" : "" );
 				if ( !_r ) {
 					let h = e(),
 						i = e(),
@@ -199,6 +200,7 @@
 									lnkwght: a,
 									rdrct: !a,
 									styl: a,
+									kto: !a,
 									bcp: a,
 									ul: "none",
 									fntsz: 16,
