@@ -1,7 +1,7 @@
 # RFCRestyle
-An open source Chrome extension, first published on the Chrome webstore in early 2013, that restyles ietf.org RFC and Draft documents for reading comfort.
+An open source Chrome extension, first published on the Chrome Web Store in early 2013, that restyles ietf.org RFC and Draft documents for reading comfort.
 
-[The "Expanded" subdirectory](https://github.com/FredGandt/RFCRestyle/tree/master/Expanded) contains identical code to that of the parent directory, except for the inclusion of vast quantities of the useless whitespace, a few braces and some semicolons.
+[The "Expanded" subdirectory](https://github.com/FredGandt/RFCRestyle/tree/master/Expanded) contains identical code to that of the parent directory, except for the inclusion of vast quantities of useless whitespace, a few braces and some semicolons.
 
 [The "Deminified" subdirectory](https://github.com/FredGandt/RFCRestyle/tree/master/Deminified) contains code that is functionally identical to that of the parent directory, but is rewritten to be comfortably human readable. Some slight differences in the methodology of the code exist as a side effect of the removal of minification.
 
