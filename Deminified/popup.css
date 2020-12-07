@@ -52,8 +52,10 @@ select {
 	margin: .3rem 0 .3rem .2rem;
 }
 label {
-	white-space: nowrap;
 	display: block;
+}
+fieldset, label {
+	white-space: nowrap;
 }
 fieldset, hr {
 	border: 1px solid #999;
