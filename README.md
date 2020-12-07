@@ -9,6 +9,9 @@ An open source Chrome extension, first published on the Chrome Web Store in earl
 Via the Chrome Web Store at https://chrome.google.com/webstore/detail/rfcrestyle/babdjpjkdmdppnlgjlpgiknmbdblmdbd
 
 ## Change-Log (latest first):
+* December 7, 2020 - Version 3.0.1
+  * Minor update to popup.css to fix layout.
+
 * August 29, 2020 - Version 3.0.0
   * Added the option to keep the Table of Contents open all the time per user request made on the Chrome Web Store.
   * Slightly increased the ToC's clearence aside the body content.
