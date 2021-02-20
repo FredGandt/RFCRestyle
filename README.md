@@ -11,7 +11,7 @@ If this wording seems strange; understand that I wrote the code in its minified 
 Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](https://chrome.google.com/webstore/detail/rfcrestyle/babdjpjkdmdppnlgjlpgiknmbdblmdbd)
 
 ### Alternatively:
-* Copy all the files from [the master](https://github.com/FredGandt/RFCRestyle) directory and use them as you like. For a purely functional set of files for personal use, you can exclude the sub directories, this "readme" and the license. I think you'll need to keep the license if you intend passing the code along in some forml I'm no lawyer.
+* Copy all the files from [the master](https://github.com/FredGandt/RFCRestyle) directory and use them as you like. For a purely functional set of files for personal use, you can exclude the sub directories, this "readme" and the license. I think you'll need to keep the license if you intend passing the code along in some form; I'm no lawyer.
   * Chrome extensions may be loaded in an unpacked form from local files when "developer mode" is enabled in chrome://extensions/.
   * As I understand it (I haven't really studied the subject in great detail); Chrome extensions [may be added to some other browsers](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Build_a_cross_browser_extension) with little to no alteration.
 
