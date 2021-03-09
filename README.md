@@ -5,7 +5,7 @@ An open source Chrome extension, first published on the Chrome Web Store in earl
 
 [The "Deminified" subdirectory](https://github.com/FredGandt/RFCRestyle/tree/master/Deminified) contains code that is functionally identical to that of the parent directory, but is rewritten to be comfortably human readable. Some slight differences in the methodology of the code exist as a side effect of the removal of minification.
 
-If this wording seems strange; understand that I wrote the code in its minified form and, only for the purposes of publishing it here in an easy-to-grok format, had to create the "deminified" code by reverse engineering the minified original.
+*If this wording seems strange; understand that I wrote the code in its minified form and, only for the purposes of publishing it here in an easy-to-grok format, had to create the "deminified" code by reverse engineering the minified original.*
 
 ## Installation:
 Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](https://chrome.google.com/webstore/detail/rfcrestyle/babdjpjkdmdppnlgjlpgiknmbdblmdbd)
