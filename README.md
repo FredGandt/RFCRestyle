@@ -16,6 +16,9 @@ Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](http
   * As I understand it (I haven't really studied the subject in great detail); Chrome extensions [may be added to some other browsers](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Build_a_cross_browser_extension) with little to no alteration.
 
 ## Change-Log (latest first):
+* March 15, 2021 - Version 3.0.2
+  * Minor update to init.css to apply contained overscroll-behavior to the Table of Contents (ToC)
+
 * December 7, 2020 - Version 3.0.1
   * Minor update to popup.css to fix layout.
 
