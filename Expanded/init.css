@@ -141,6 +141,7 @@ a.invisible, #legend {
 }
 nav {
 	max-height: calc(100vh - 3.5rem);
+	overscroll-behavior: contain;
 	padding-right: .2rem;
 	margin-top: .5rem;
 	cursor: default;
