@@ -1,10 +1,10 @@
 "use strict";
 
 ( function( DOC ) {
-	
+
 	let restyled = false,
 		react_to_store_change = true;
-	
+
 	const CHECK_LOCATION = /^\/(?:id|rfc)\/(rfc(?:[0-9]+)|draft-(?:[a-zA-Z0-9\-]+))(?:\.txt)?$/.exec( location.pathname ),
 		forEachObjectNames = ( obj, fnc ) => Object.getOwnPropertyNames( obj ).forEach( fnc ),
 		querySelect = ( what, how, where ) => ( where || DOC )[ "querySelector" + ( how ? "All" : "" ) ]( what ),
@@ -110,13 +110,8 @@
 							}
 							encapsulateWhitespace( pre.lastElementChild.previousSibling, /(\n+$)/ );
 						} );
-						querySelect( "h1,h2,h3,h4,h5,h6", true ).forEach( heading => {
-							let heading_par_prev_sib = heading.parentElement.previousSibling,
-								heading_par_prev_sib_tag_name = heading_par_prev_sib.tagName,
-								selflink = querySelect( "a.selflink", false, heading );
-							if ( ( isTextNode( heading_par_prev_sib ) && !/\n\s+$/m.test( heading_par_prev_sib.textContent ) ) || heading_par_prev_sib_tag_name && ( /^h[1-6]$/.test( heading_par_prev_sib_tag_name ) || ( heading_par_prev_sib_tag_name === "SPAN" && querySelect( ".whitespace", false, heading_par_prev_sib ) ) ) ) {
-								heading.classList.add( "x" );
-							}
+						querySelect( ".h1,.h2,.h3,.h4,.h5,.h6", true ).forEach( heading => {
+							let selflink = querySelect( "a.selflink", false, heading );
 							if ( selflink ) {
 								addLinkToNav( heading.textContent, selflink.href );
 							}
@@ -205,7 +200,7 @@
 				}
 			} );
 		};
-	
+
 	chrome.storage.onChanged.addListener( ( store, where ) => {
 		if ( react_to_store_change ) {
 			if ( where === "sync" ) {
@@ -225,9 +220,9 @@
 			}
 		}
 	} );
-	
+
 	chrome.runtime.connect( { name: "init" } );
-	
+
 	initRestyling( true );
-	
+
 } ( document ) );
