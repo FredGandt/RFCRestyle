@@ -1,7 +1,7 @@
 # RFCRestyle
 An open source Chrome extension, first published on the Chrome Web Store in early 2013, that restyles ietf.org RFC and Draft documents for reading comfort.
 
-ATTENTION (May 13, 2021): A recent change to the ietf.org delivery of RFCs has rendered this extension temporarily useless. I am working on a permanent fix for the issue, and have already got it mostly working again, but we have to wait for Google to review the extension before they publish the update. Please be patient :)
+## ATTENTION (May 17, 2021): Recent changes to the ietf.org delivery of RFCs rendered this extension temporarily useless. While working on a rushed fix for the sudden, unexpected foul-up, completely out of my control, I came to the conclusion that maintaining this extension is a horrible job of work. I will therefore rewrite it from scratch and do without the minification. The current live version is working (mostly), so there's no rush.
 
 [The "Expanded" subdirectory](https://github.com/FredGandt/RFCRestyle/tree/master/Expanded) contains identical code to that of the parent directory, except for the inclusion of vast quantities of useless whitespace, a few braces and some semicolons.
 
@@ -18,6 +18,9 @@ Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](http
   * As I understand it (I haven't really studied the subject in great detail); Chrome extensions [may be added to some other browsers](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Build_a_cross_browser_extension) with little to no alteration.
 
 ## Change-Log (latest first):
+* May 13, 2021 - Version 3.0.5
+  * Rushed alterations after the IETF changed the HTML RFC addresses, document structure and who know what else.
+
 * April 4, 2021 - Version 3.0.3
   * Fixes for failure of index.js to linkify RFC and BCP indexes onscroll
 
