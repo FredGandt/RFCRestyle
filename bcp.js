@@ -1,1 +1,28 @@
-"use strict";const U="https://datatracker.ietf.org/doc/html/rfc",H='<a href="'+U+'$2">',Q="querySelector",I="innerHTML",R="replace",C=document[Q](".content"),P=C[Q]("pre"),RE=/\n(Request for Comments: 0*([0-9]+))/g,M=C[I].match(RE),S=chrome.runtime.sendMessage;chrome.storage.local.get(s=>{let z=s.prfl,x=!0;if(z)x=s.prfls[z].bcp;if(M.length>1){if(x)S({nt:M.map(u=>u[R](RE,U+"$2"))});else P[I]=P[I][R](/\]\n/,"\n "+M.map(u=>u[R](RE,H+"RFC $2</a>")).join(", ")+"]\n")}else if(x)S({nt:[U+RE.exec(C[I])[2]]});else C[I]=C[I][R](RE,"\n"+H+"$1</a> ")});C.style.margin="0 auto";
+"use strict";
+
+const BASE_URL = "https://tools.ietf.org/html/rfc",
+	A_TAG_START = '<a href="' + BASE_URL + '$2">',
+	CONTENT = document.querySelector( ".content" ),
+	PRE = CONTENT.querySelector( "pre" ),
+	REGEX = /\n(Request for Comments: 0*([0-9]+))/g,
+	MATCHES = CONTENT.innerHTML.match( REGEX );
+
+chrome.storage.local.get( store => {
+	const STORED_PROFILE = store.prfl;
+	let redirect_to_rfc = true;
+	if ( STORED_PROFILE ) {
+		redirect_to_rfc = store.prfls[ STORED_PROFILE ].bcp;
+	}
+	if ( MATCHES.length > 1 ) {
+		if ( redirect_to_rfc ) {
+			chrome.runtime.sendMessage( { "new_tab": MATCHES.map( mtch => mtch.replace( REGEX, BASE_URL + "$2" ) ) } );
+		} else {
+			PRE.innerHTML = PRE.innerHTML.replace( /\]\n/, "\n " + MATCHES.map( mtch => mtch.replace( REGEX, A_TAG_START + "RFC $2</a>" ) ).join( ", " ) + "]\n" );
+		}
+	} else if ( redirect_to_rfc ) {
+		chrome.runtime.sendMessage( { "new_tab": [ BASE_URL + REGEX.exec( CONTENT.innerHTML )[ 2 ] ] } );
+	} else {
+		CONTENT.innerHTML = CONTENT.innerHTML.replace( REGEX, "\n" + A_TAG_START + "$1</a> " );
+	}
+} );
+CONTENT.style.margin = "0 auto";

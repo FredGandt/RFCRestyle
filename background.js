@@ -1,1 +1,31 @@
-"use strict";function s(f){chrome.storage.local.get(a=>{if(a.sync)chrome.storage.sync.set(a);if(typeof f==="function")f()})}chrome.runtime.onConnect.addListener(p=>{if(p.name==="i")chrome.pageAction.show(p.sender.tab.id);else p.onDisconnect.addListener(s)});chrome.runtime.onMessage.addListener((a,b)=>{switch(Object.keys(a)[0]){case"c":chrome.tabs.insertCSS(b.tab.id,{file:"init.css"});break;case"u":s((c=>chrome.tabs.update(b.tab.id,{url:a.u})));break;case"nt":a.nt.forEach((u,i)=>{if(!i)chrome.tabs.update(b.tab.id,{url:u});else chrome.tabs.create({url:u,active:!1})});break;default:s((c=>chrome.tabs.reload()))}});
+
+"use strict";
+
+function syncronize( fnc ) {
+	chrome.storage.local.get( store => {
+		if ( store.sync ) {
+			chrome.storage.sync.set( store );
+		}
+		if ( typeof fnc === "function" ) {
+			fnc();
+		}
+	} );
+}
+
+chrome.runtime.onConnect.addListener( port => {
+	if ( port.name === "init" ) {
+		chrome.pageAction.show( port.sender.tab.id );
+	} else {
+		port.onDisconnect.addListener( syncronize );
+	}
+} );
+
+chrome.runtime.onMessage.addListener( ( msg, sender ) => {
+	switch ( Object.keys( msg )[ 0 ] ) {
+		case "css": chrome.tabs.insertCSS( sender.tab.id, { "file": "init.css" } );
+			break;
+		case "update": syncronize( ( () => chrome.tabs.update( sender.tab.id, { "url": msg.update } ) ) );
+			break;
+		default: syncronize( ( () => chrome.tabs.reload() ) );
+	}
+} );

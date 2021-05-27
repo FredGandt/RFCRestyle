@@ -1,1 +1,216 @@
-"use strict";(function(A){let _r=!1,_l=!0;const B="textContent",C="Element",D="class",E="Child",F="append"+E,G=D+"List",H="Sibling",I="Listener",J=chrome,K=J.storage,L=K.sync,M="match",N=K.local,P=J.runtime,Q="sendMessage",R="Attribute",S="set"+R,T="parent",U="forEach",V="previous",W="remove",X="create",Y="addEvent"+I,Z="accesskey",AA="insertBefore",AB=/^\/(?:id|rfc)\/(rfc(?:[0-9]+)|draft-(?:[a-zA-Z0-9\-]+))(?:\.txt)?$/.exec(location.pathname),BZ=(a,b)=>Object.getOwnPropertyNames(a)[U](b),BA=(a,b,c)=>(c||A)["querySelector"+(b?"All":"")](a),BB=a=>{a=a.prfls[a.prfl];if(!!AB){if(a.rdrct)P[Q]({u:"https://datatracker.ietf.org/doc/html/"+AB[1]})}else if(a.styl){let b="https://fonts.googleapis.com/css?family="+a.fnt.replace(/ /g,"+")+":400,700&amp;subset="+["cyrillic","greek","latin","greek,cyrillic"].join("-ext,"),c=a.fzzy/10+"rem ",d=a.fzzy/20+"rem",e=f=>A[X+C](f||"button");if(!~["monospace","Lucida Console","Consolas","Courier"].indexOf(a.fnt)&&!BA('link[href="'+b+'"]')){let g=e("link");g.rel="stylesheet";g.type="text/css";g.href=b;A.head[F](g)}BA("style")[B]=":root{--"+['a:"'+a.fnt+'",monospace!important',"b:0 0 "+c+c+a.bodybg,"c:"+a.htmlbg,"d:"+a.bodybg,"e:"+a.slctn,"f:"+a.nrml,"g:"+a.lnk,"h:"+a.vha,"i:0 0 "+d+" 0","j:0 0 0 "+d,"k:.1rem "+a.ul,"l:"+d,"m:"+c,"n:"+a.fntsz+"px","o:"+(a.lnkwght?"700":"400")].join(";--")+"}.whitespace,.grey,.grey a:link,.grey a:visited{"+(a.continuous?"display:none}.x{margin-top:1rem}pre{margin:0":"color:"+a.lght+"}pre{margin:.4rem 0 0 0;border-top:1px dotted "+a.lght)+"}"+(a.kto?"#toc{padding-bottom:.8rem;height:auto}":"");if(!_r){let h=e(),i=e(),j=e("nav"),k=BA("#legend"),l=k[T+C],m=k[V+C+H],o=(p,q,n)=>{let r=e("a"),ac=p[M](/^[^ ]+/g)[0][M](/\./g);r[B]=p;r.href=q;if(!n&&ac)r[G].add("c"+ac.length);j[F](r)},s=t=>t.nodeType===3,u=(v,w)=>{if(s(v)){let x=e("span"),y;v[B].split(w)[U](z=>{y=A[X+"TextNode"](z);if(w.test(z)){y=e("span");y[G].add("whitespace");y[B]=z}x[F](y)});v[T+"Node"]["replace"+E](x,v)}};P[Q]({c:!0},()=>{h[S](D,m["get"+R](D));h.title=m.title;l.innerHTML=BA("script[type]:not([src])")[B].replace(/\\+/g,"")[M](/Colou?r legend[^"]+/);l.title="";l.id="legend";l[W+R]("style");l[S]("tabindex",0);l[S](D,k["get"+R](D));l[T+C][AA](h,l);h[S](Z,"l");h[B]="Color legend ( alt+L )";h[F](l);i.id="toc";i[S](Z,"t");i[B]="Table of contents ( alt+T )";o("Top","#legend",1);i[F](j);i[Y]("blur",()=>i[G][W]("open"));A[Y]("focusin",aa=>i[G].toggle("open",~aa.path.indexOf(i)));A.body[AA](i,BA(".content"));BA("pre",1)[U](ab=>{let ae=ab["first"+C+E],af=ae["next"+H];if(ab[G].contains("newpage")){if(s(af)&&af[B].length===1)ab[W+E](af);u(ae["next"+C+H]["next"+H],/(^\n+|\n+$)/g)}u(ab["last"+C+E][V+H],/(\n+$)/)});BA(".h1,.h2,.h3,.h4,.h5,.h6",1)[U](ag=>{let aj=BA("a.selflink",0,ag);if(aj)o(ag[B],aj.href)})});_r=!0}}else if(_r)P[Q]({r:!0})},BC=a=>a.toString(16).padStart(2,"0"),BD=a=>{BZ(a,b=>{let c=a[b];if(typeof c==="object")a[b]="#"+BC(c.r)+BC(c.g)+BC(c.b)});if(typeof a.fzzy!=="number")a.fzzy=8;return a},BE=(a,b)=>{_l=!1;(b||N).set(a,c=>_l=!0)},BY=a=>{_l=!1;a.clear(b=>_l=!0)},BX=(a,b)=>{if(a.ul){BY(N);BZ(a.prfls,c=>a.prfls[c]=Object.assign({bcp:!0},a.prfls[c]));a={sync:a.sync,prfl:a.prfl,prfls:a.prfls};if(b){BY(L);BE(a,L)}}return a},BF=a=>{L.get(b=>{if(b.sync){b=BX(b,!0);BB(b);BE(b)}else if(a){N.get(c=>{c=BX(c);BB(c=c.prfl?c:{sync:!a,prfl:"Foo",prfls:{Foo:Object.assign({prfl:"Foo",fnt:"Inconsolata",htmlbg:"#404040",bodybg:"#e0e0e0",slctn:"#c0c0c0",nrml:"#404040",lght:"#a0a0a0",lnk:"#0040c0",vha:"#009123",continuous:a,lnkwght:a,rdrct:!a,styl:a,kto:!a,bcp:a,ul:"none",fntsz:16,fzzy:8},BD(c))}});BE(c)})}})};K.onChanged["add"+I]((a,b)=>{if(_l){if(b==="sync"){if(!a.sync)BF()}else{if(a.sync){if(a.sync.newValue)N.get(c=>BE(c,L));else BY(L)}else N.get(d=>BB(d))}}});P.connect({name:"i"});BF(!0)}(document));
+
+"use strict";
+
+( function( DOC ) {
+
+	let restyled = false,
+		react_to_store_change = true;
+
+	const regulariseHEXVals = num => num.toString( 16 ).padStart( 2, "0" ),
+
+		forEachObjectNames = ( obj, fnc ) => Object.getOwnPropertyNames( obj ).forEach( fnc ),
+
+		querySelect = ( what, how, where ) => ( where || DOC )[ `querySelector${ how ? "All" : "" }` ]( what ),
+
+		clearStore = where => {
+			react_to_store_change = false;
+			where.clear( complete => react_to_store_change = true );
+		},
+
+		setStore = ( what, where ) => {
+			react_to_store_change = false;
+			( where || chrome.storage.local ).set( what, complete => react_to_store_change = true );
+		},
+
+		backwardsCompatibilityOne = store => {
+			forEachObjectNames( store, prop => {
+				let val = store[ prop ];
+				if ( typeof val === "object" ) {
+					store[ prop ] = `#${regulariseHEXVals( val.r )}${regulariseHEXVals( val.g )}${regulariseHEXVals( val.b )}`;
+				}
+			} );
+			if ( typeof store.fzzy !== "number" ) {
+				store.fzzy = 8;
+			}
+			return store;
+		},
+
+		backwardsCompatibilityTwo = ( store, and_sync ) => {
+			if ( store.ul ) {
+				clearStore( chrome.storage.local );
+				forEachObjectNames( store.prfls, c => store.prfls[ c ] = Object.assign( { bcp: true }, store.prfls[ c ] ) );
+				store = {
+					sync: store.sync,
+					prfl: store.prfl,
+					prfls: store.prfls
+				}
+				if ( and_sync ) {
+					clearStore( chrome.storage.sync );
+					setStore( store, chrome.storage.sync );
+				}
+			}
+			return store;
+		},
+
+		restyle = store => {
+			let CHECK_LOCATION = /^\/rfc\/(rfc(?:[0-9]+))(?:\.txt)?$/.exec( location.pathname );
+			store = store.prfls[ store.prfl ];
+
+			if ( !!CHECK_LOCATION ) {
+				if ( store.rdrct ) {
+					chrome.runtime.sendMessage( { "update": `https://datatracker.ietf.org/doc/html/${CHECK_LOCATION[ 1 ]}` } );
+				}
+			} else if ( store.styl ) {
+				let twentieth_of_fzzy = `${store.fzzy / 20}rem`,
+					tenth_of_fzzy = `${store.fzzy / 10}rem `;
+
+				querySelect( "style" ).textContent = `:root{--b:0 0 ${tenth_of_fzzy}${tenth_of_fzzy}${store.bodybg};--c:${store.htmlbg};--d:${store.bodybg};--e:${store.slctn};--f:${store.nrml};--g:${store.lnk};--h:${store.vha};--i:0 0 ${twentieth_of_fzzy} 0;--j:0 0 0 ${twentieth_of_fzzy};--k:.1rem ${store.ul};--l:${twentieth_of_fzzy};--m:${tenth_of_fzzy};--n:${store.fntsz}px;--o:${store.lnkwght ? "700" : "400"}}.whitespace,.grey,.grey a:link,.grey a:visited{${store.continuous ? "display:none}.x{margin-top:1rem}pre{margin:0" : "color:" + store.lght + "}pre{margin:.4rem 0 0 0;border-top:1px dotted " + store.lght}}${store.kto ? "#toc{padding-bottom:.8rem;height:auto}" : ""}`;
+
+				if ( !restyled ) {
+					let legend_btn = DOC.createElement( "button" ),
+						toc_btn = DOC.createElement( "button" ),
+						nav = DOC.createElement( "nav" ),
+						orig_legend = querySelect( "#legend" ),
+						orig_legend_par = orig_legend.parentElement,
+						orig_legend_prev_sib = orig_legend.previousElementSibling,
+
+						addLinkToNav = ( anchor_txt, addr, is_top ) => {
+							let anchor = DOC.createElement( "a" ),
+								indent = anchor_txt.match( /^[^ ]+/g )[ 0 ].match( /\./g );
+							anchor.textContent = anchor_txt;
+							anchor.href = addr;
+							if ( !is_top && indent ) {
+								anchor.classList.add( `c${indent.length}` );
+							}
+							nav.appendChild( anchor );
+						},
+
+						isTextNode = node => node.nodeType === 3,
+
+						encapsulateWhitespace = ( elmnt, reg_ex ) => {
+							if ( isTextNode( elmnt ) ) {
+								let span = DOC.createElement( "span" ), txt_or_span;
+								elmnt.textContent.split( reg_ex ).forEach( chunk_of_txt => {
+									txt_or_span = DOC.createTextNode( chunk_of_txt );
+									if ( reg_ex.test( chunk_of_txt ) ) {
+										txt_or_span = DOC.createElement( "span" );
+										txt_or_span.classList.add( "whitespace" );
+										txt_or_span.textContent = chunk_of_txt;
+									}
+									span.appendChild( txt_or_span );
+								} );
+								elmnt.parentNode.replaceChild( span, elmnt );
+							}
+						};
+
+					chrome.runtime.sendMessage( { "css": true }, () => {
+						legend_btn.setAttribute( "class", orig_legend_prev_sib.getAttribute( "class" ) );
+						legend_btn.title = orig_legend_prev_sib.title;
+						orig_legend_par.innerHTML = querySelect( "script[type]:not([src])" ).textContent.replace( /\\+/g, "" ).match( /Colou?r legend[^"]+/ );
+						orig_legend_par.title = "";
+						orig_legend_par.id = "legend";
+						orig_legend_par.removeAttribute( "style" );
+						orig_legend_par.setAttribute( "tabindex", 0 );
+						orig_legend_par.setAttribute( "class", orig_legend.getAttribute( "class" ) );
+						orig_legend_par.parentElement.insertBefore( legend_btn, orig_legend_par );
+						legend_btn.setAttribute( "accesskey", "l" );
+						legend_btn.textContent = "Color legend ( alt+L )";
+						legend_btn.appendChild( orig_legend_par );
+						toc_btn.id = "toc";
+						toc_btn.setAttribute( "accesskey", "t" );
+						toc_btn.textContent = "Table of contents ( alt+T )";
+						addLinkToNav( "Top", "#legend", true );
+						toc_btn.appendChild( nav );
+						toc_btn.addEventListener( "blur", () => toc_btn.classList.remove( "open" ) );
+						DOC.addEventListener( "focusin", evt => toc_btn.classList.toggle( "open", ~evt.path.indexOf( toc_btn ) ) );
+						DOC.body.insertBefore( toc_btn, querySelect( ".content" ) );
+						querySelect( "pre", true ).forEach( pre => {
+							let pre_first_child = pre.firstElementChild,
+								pre_second_child = pre_first_child.nextSibling;
+							if ( pre.classList.contains( "newpage" ) ) {
+								if ( isTextNode( pre_second_child ) && pre_second_child.textContent.length === 1 ) {
+									pre.removeChild( pre_second_child );
+								}
+								encapsulateWhitespace( pre_first_child.nextElementSibling.nextSibling, /(^\n+|\n+$)/g );
+							}
+							encapsulateWhitespace( pre.lastElementChild.previousSibling, /(\n+$)/ );
+						} );
+						querySelect( ".h1,.h2,.h3,.h4,.h5,.h6", true ).forEach( heading => {
+							let selflink = querySelect( "a.selflink", false, heading );
+							if ( selflink ) {
+								addLinkToNav( heading.textContent, selflink.href );
+							}
+						} );
+					} );
+					restyled = true;
+				}
+			} else if ( restyled ) {
+				chrome.runtime.sendMessage( { arbitrary_prop_name: true } );
+			}
+		},
+
+		initRestyling = init => {
+			chrome.storage.sync.get( sync_store => {
+				if ( sync_store.sync ) {
+					sync_store = backwardsCompatibilityTwo( sync_store, true );
+					restyle( sync_store );
+					setStore( sync_store );
+				} else if ( init ) {
+					chrome.storage.local.get( local_store => {
+						local_store = backwardsCompatibilityTwo( local_store );
+						restyle( local_store = local_store.prfl ? local_store : {
+							sync: false,
+							prfl: "Foo",
+							prfls: {
+								Foo: Object.assign( {
+									prfl: "Foo",
+									htmlbg: "#404040",
+									bodybg: "#e0e0e0",
+									slctn: "#c0c0c0",
+									nrml: "#404040",
+									lght: "#a0a0a0",
+									lnk: "#0040c0",
+									vha: "#009123",
+									continuous: true,
+									lnkwght: true,
+									rdrct: false,
+									styl: true,
+									kto: false,
+									bcp: true,
+									ul: "none",
+									fntsz: 16,
+									fzzy: 8
+								}, backwardsCompatibilityOne( local_store ) )
+							}
+						} );
+						setStore( local_store );
+					} );
+				}
+			} );
+		};
+
+	chrome.storage.onChanged.addListener( ( store, where ) => {
+		if ( react_to_store_change ) {
+			if ( where === "sync" ) {
+				if ( !store.sync ) {
+					initRestyling();
+				}
+			} else {
+				if ( store.sync ) {
+					if ( store.sync.newValue ) {
+						chrome.storage.local.get( local_store => setStore( local_store, chrome.storage.sync ) );
+					} else {
+						clearStore( chrome.storage.sync );
+					}
+				} else {
+					chrome.storage.local.get( local_store => restyle( local_store ) );
+				}
+			}
+		}
+	} );
+
+	chrome.runtime.connect( { name: "init" } );
+
+	initRestyling( true );
+
+} ( document ) );

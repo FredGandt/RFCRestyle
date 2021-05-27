@@ -1,25 +1,25 @@
 # RFCRestyle
-An open source Chrome extension, first published on the Chrome Web Store in early 2013, that restyles ietf.org RFC and Draft documents for reading comfort.
-
-# ATTENTION (May 17, 2021): Recent changes to the ietf.org delivery of RFCs rendered this extension temporarily useless. While working on a rushed fix for the sudden, unexpected foul-up, completely out of my control, I came to the conclusion that maintaining the minified extension is a horrible job of work and will therefore rewrite it from the deminified code and scrap the minified version. The current live version is working (mostly), so there's no rush.
-
-[The "Expanded" subdirectory](https://github.com/FredGandt/RFCRestyle/tree/master/Expanded) contains identical code to that of the parent directory, except for the inclusion of vast quantities of useless whitespace, a few braces and some semicolons.
-
-[The "Deminified" subdirectory](https://github.com/FredGandt/RFCRestyle/tree/master/Deminified) contains code that is functionally identical to that of the parent directory, but is rewritten to be comfortably human readable. Some slight differences in the methodology of the code exist as a side effect of the removal of minification.
-
-*If this wording seems strange; understand that I wrote the code in its minified form and, only for the purposes of publishing it here in an easy-to-grok format, had to create the "deminified" code by reverse engineering the minified original.*
+An open source Chrome extension, first published on the Chrome Web Store in early 2013, that restyles ietf.org RFC documents for reading comfort.
 
 ## Installation:
 Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](https://chrome.google.com/webstore/detail/rfcrestyle/babdjpjkdmdppnlgjlpgiknmbdblmdbd)
 
 ### Alternatively:
-* Copy all the files from [the master](https://github.com/FredGandt/RFCRestyle) directory and use them as you like. For a purely functional set of files for personal use, you can exclude the sub directories, this "readme" and the license. I think you'll need to keep the license if you intend passing the code along in some form; I'm no lawyer.
+* Copy all the files from [the master](https://github.com/FredGandt/RFCRestyle) directory and use them as you like. For a purely functional set of files for personal use, you can exclude this "readme" and the license. I think you'll need to keep the license if you intend passing the code along in some form; I'm no lawyer.
   * Chrome extensions may be loaded in an unpacked form from local files when "developer mode" is enabled in chrome://extensions/.
   * As I understand it (I haven't really studied the subject in great detail); Chrome extensions [may be added to some other browsers](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Build_a_cross_browser_extension) with little to no alteration.
 
 ## Change-Log (latest first):
+* May 27, 2021 - Version 3.5.0
+  * Since the IETF occasionally makes changes to the structure and delivery of their documents, which usually temporarily breaks this extension leaving me with a big debugging project I can live without, I have:
+  * Scrapped minification (as it's a lot of extra work to maintain).
+	* Scrapped handing of BCPs.
+	* Scrapped handing of drafts.
+	* Scrapped linkifying RFC and BCP index pages.
+	* Scrapped optional monospace fonts (due to content-security policy changes, Google Web Fonts can no longer be loaded, and I can't be bothered to find a workaround).
+
 * May 13, 2021 - Version 3.0.5
-  * Rushed alterations after the IETF changed the HTML RFC addresses, document structure and who know what else
+  * Rushed alterations after the IETF changed the HTML RFC addresses, document structure and who know what else.
 
 * April 4, 2021 - Version 3.0.3
   * Fixes for failure of index.js to linkify RFC and BCP indexes onscroll
@@ -32,7 +32,7 @@ Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](http
 
 * August 29, 2020 - Version 3.0.0
   * Added the option to keep the Table of Contents open all the time per user request made on the Chrome Web Store.
-  * Slightly increased the ToC's clearence aside the body content.
+  * Slightly increased the ToC's clearance aside the body content.
   * Jumped to v3 from v2.3 to fix versioning error.
 
 * July 24, 2019 - Version 2.30

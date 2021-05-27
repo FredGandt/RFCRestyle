@@ -1,1 +1,228 @@
-::selection{background:var(--e)}html{font-size:var(--n);width:100%}body{background:var(--c);margin:2rem 0}body *,body{font-family:var(--a)}hr{display:none}span.noprint:last-child{white-space:pre-line}a{text-decoration:none;font-weight:var(--o)}a[href]:visited:hover,a[href]:active:hover,a[href]:link{color:var(--g)}a[href]:visited,a[href]:active,a[href]:hover{color:var(--h)}.cplate,#toc a,button{display:block}.content{border-radius:var(--m);box-shadow:var(--b);padding:0 1rem 1rem;margin:0 auto;width:72ch}.content a[href]:not(.invisible){border-bottom:var(--k)}.content span.grey a[href]{border:0}.content button{border-radius:var(--l);padding-bottom:.25rem;margin-bottom:1rem;font:inherit;height:2rem;width:100%;border:0}a.invisible,#legend{position:absolute}#legend{padding:1rem 1.5rem 1rem 1rem;border-radius:var(--i);overflow:hidden;text-align:left;height:1rem;opacity:0;left:0;top:0}.content button:focus #legend{height:auto;opacity:1}.cplate{border:1px solid #888;width:2rem}#legend,#toc{box-shadow:0 0 1rem 0.1rem rgba(0,0,0,.5)}.bgmagenta{background:#f4f}.bgorange{background:#fa0}.bgyellow{background:#ee0}.bgwhite{background:#fff}.bgbrown{background:#840}.bggreen{background:#4f4}.bggrey{background:#666}.bgblue{background:#66f}.bgcyan{background:#4dd}.bgred{background:#f44}.bgmagenta .bgmagenta:after,.bgorange .bgorange:after,.bgyellow .bgyellow:after,.bgwhite .bgwhite:after,.bgbrown .bgbrown:after,.bggreen .bggreen:after,.bggrey .bggrey:after,.bgblue .bgblue:after,.bgcyan .bgcyan:after,.bgred .bgred:after{margin-left:.3rem;content:"\2713"}.content,#legend,#toc{background:var(--d)}#toc{max-width:calc((100vw - 72ch - 2rem)/2);min-width:calc(27ch + 2rem);border-radius:var(--j);padding:.2rem 0 0 1rem;white-space:nowrap;overflow:hidden;font-weight:700;font-size:1rem;position:fixed;height:1.5rem;color:inherit;border:0;right:0;top:0}#toc a+a{margin:.15rem 0 0 1ch;white-space:normal;font-weight:normal;text-indent:-1ch;text-align:left}#toc .c2{margin-left:2ch}#toc .c3{margin-left:3ch}#toc .c4{margin-left:4ch}#toc .c5{margin-left:5ch}#toc .c6{margin-left:6ch}#toc.open{padding-bottom:.8rem;height:auto}nav{max-height:calc(100vh - 3.5rem);overscroll-behavior:contain;padding-right:.2rem;margin-top:.5rem;cursor:default;overflow:auto}button,a{cursor:pointer}.h1{font-size:1.75rem}.h2{font-size:1.5rem}.h3{font-size:1.25rem}.pre,pre{white-space:pre}pre:first-of-type{padding-top:.5rem}.newpage{page-break-before:always}a.selflink,#legend,body{color:var(--f)}pre.pre.meta-info,.h1,.h2,.h3,.h4,.h5,.h6{white-space:pre-wrap;max-width:72ch;display:block}nav,span:not([class])+.h1,span:not([class])+.h2,span:not([class])+.h3,span:not([class])+.h4,span:not([class])+.h5,span:not([class])+.h6{margin-top:1.5rem}
+
+::selection {
+	background: var( --e );
+}
+
+html {
+	font-size: var( --n );
+	width: 100%;
+}
+
+body {
+	background: var( --c );
+	margin: 2rem 0;
+}
+
+body *,
+body {
+	font-family: monospace,monospace;
+}
+
+hr {
+	display: none;
+}
+
+span.noprint:last-child {
+	white-space: pre-line;
+}
+
+a {
+	font-weight: var( --o );
+	text-decoration: none;
+}
+
+a[href]:visited:hover,
+a[href]:active:hover,
+a[href]:link {
+	color: var( --g );
+}
+
+a[href]:visited,
+a[href]:active,
+a[href]:hover {
+	color: var( --h );
+}
+
+.cplate,
+#toc a,
+button {
+	display: block;
+}
+
+.content {
+	border-radius: var( --m );
+	box-shadow: var( --b );
+	padding: 0 1rem 1rem;
+	margin: 0 auto;
+	width: 72ch;
+}
+
+.content a[href]:not(.invisible) {
+	border-bottom: var( --k );
+}
+
+.content span.grey a[href] {
+	border: 0;
+}
+
+.content button {
+	border-radius: var( --l );
+	padding-bottom: .25rem;
+	margin-bottom: 1rem;
+	font: inherit;
+	height: 2rem;
+	width: 100%;
+	border: 0;
+}
+
+a.invisible,
+#legend {
+	position: absolute;
+}
+
+#legend {
+	padding: 1rem 1.5rem 1rem 1rem;
+	border-radius: var( --i );
+	overflow: hidden;
+	text-align: left;
+	height: 1rem;
+	opacity: 0;
+	left: 0;
+	top: 0;
+}
+
+.content button:focus #legend {
+	height: auto;
+	opacity: 1;
+}
+
+.cplate{
+	border: 1px solid #888;
+	width: 2rem;
+}
+
+#legend,
+#toc {
+	box-shadow: 0 0 1rem 0.1rem rgba( 0, 0, 0, .5 );
+}
+
+.bgmagenta { background: #f4f }
+.bgorange { background: #fa0 }
+.bgyellow { background: #ee0 }
+.bgwhite { background: #fff }
+.bgbrown { background: #840 }
+.bggreen { background: #4f4 }
+.bggrey { background: #666 }
+.bgblue { background: #66f }
+.bgcyan { background: #4dd }
+.bgred { background: #f44 }
+
+.bgmagenta .bgmagenta:after,
+.bgorange .bgorange:after,
+.bgyellow .bgyellow:after,
+.bgwhite .bgwhite:after,
+.bgbrown .bgbrown:after,
+.bggreen .bggreen:after,
+.bggrey .bggrey:after,
+.bgblue .bgblue:after,
+.bgcyan .bgcyan:after,
+.bgred .bgred:after {
+	margin-left: .3rem;
+	content: "\2713";
+}
+
+.content,
+#legend,
+#toc {
+	background: var( --d );
+}
+
+#toc {
+	max-width: calc( ( 100vw - 72ch - 2rem ) / 2 );
+	min-width: calc( 27ch + 2rem );
+	border-radius: var( --j );
+	padding: .2rem 0 0 1rem;
+	white-space: nowrap;
+	overflow: hidden;
+	font-weight: 700;
+	font-size: 1rem;
+	position: fixed;
+	height: 1.5rem;
+	color: inherit;
+	border: 0;
+	right: 0;
+	top: 0;
+}
+
+#toc a + a {
+	margin: .15rem 0 0 1ch;
+	white-space: normal;
+	font-weight: normal;
+	text-indent: -1ch;
+	text-align: left;
+}
+
+#toc .c2 { margin-left: 2ch }
+#toc .c3 { margin-left: 3ch }
+#toc .c4 { margin-left: 4ch }
+#toc .c5 { margin-left: 5ch }
+#toc .c6 { margin-left: 6ch }
+
+#toc.open {
+	padding-bottom: .8rem;
+	height: auto;
+}
+
+nav {
+	max-height: calc( 100vh - 3.5rem );
+	overscroll-behavior: contain;
+	padding-right: .2rem;
+	margin-top: .5rem;
+	cursor: default;
+	overflow: auto;
+}
+
+button,
+a {
+	cursor: pointer;
+}
+
+.h1 { font-size: 1.75rem }
+.h2 { font-size: 1.5rem }
+.h3 { font-size: 1.25rem }
+
+.pre,
+pre {
+	white-space: pre;
+}
+
+pre:first-of-type {
+	padding-top: .5rem;
+}
+
+.newpage {
+	page-break-before: always;
+}
+
+a.selflink,
+#legend,
+body {
+	color: var( --f );
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6,
+pre.pre.meta-info {
+	white-space: pre-wrap;
+	max-width: 72ch;
+	display :block;
+}
+
+span:not([class]) + .h1,
+span:not([class]) + .h2,
+span:not([class]) + .h3,
+span:not([class]) + .h4,
+span:not([class]) + .h5,
+span:not([class]) + .h6,
+nav {
+	margin-top: 1.5rem;
+}
