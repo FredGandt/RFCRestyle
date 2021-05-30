@@ -16,7 +16,7 @@ Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](http
   	* Scrapped handing of BCPs.
   	* Scrapped handing of drafts.
   	* Scrapped linkifying RFC and BCP index pages.
-  	* Scrapped optional monospace fonts (due to content-security policy changes, Google Web Fonts can no longer be loaded, and I can't be bothered to find a workaround).
+  	* Scrapped selection from a choice of monospace fonts (due to content-security-policy changes, Google Web Fonts can no longer be loaded, and I can't be bothered to find a workaround).
 
 * May 13, 2021 - Version 3.0.5
   * Rushed alterations after the IETF changed the HTML RFC addresses, document structure and who know what else.
