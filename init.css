@@ -162,12 +162,6 @@ a.invisible,
 	text-align: left;
 }
 
-#toc .c2 { margin-left: 2ch }
-#toc .c3 { margin-left: 3ch }
-#toc .c4 { margin-left: 4ch }
-#toc .c5 { margin-left: 5ch }
-#toc .c6 { margin-left: 6ch }
-
 #toc.open {
 	padding-bottom: .8rem;
 	height: auto;

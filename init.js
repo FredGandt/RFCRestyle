@@ -74,18 +74,18 @@
 						orig_legend_par = orig_legend.parentElement,
 						orig_legend_prev_sib = orig_legend.previousElementSibling,
 
+						isTextNode = node => node.nodeType === 3,
+
 						addLinkToNav = ( anchor_txt, addr, is_top ) => {
 							let anchor = DOC.createElement( "a" ),
-								indent = anchor_txt.match( /^[^ ]+/g )[ 0 ].match( /\./g );
+								indent = anchor_txt.match( /^[0-9\.]+/g );
 							anchor.textContent = anchor_txt;
 							anchor.href = addr;
 							if ( !is_top && indent ) {
-								anchor.classList.add( `c${indent.length}` );
+								anchor.style.marginLeft = `${indent[ 0 ].match( /[0-9]+/g ).length}ch`;
 							}
 							nav.appendChild( anchor );
 						},
-
-						isTextNode = node => node.nodeType === 3,
 
 						encapsulateWhitespace = ( elmnt, reg_ex ) => {
 							if ( isTextNode( elmnt ) ) {
