@@ -1,9 +1,6 @@
 # RFCRestyle
 An open source Chrome extension, first published on the Chrome Web Store in early 2013, that restyles ietf.org RFC documents for reading comfort.
 
-## Current issue:
-I am aware that the IETF have a poorly configured server and visiting RFCs at `http` rather than `https` may result in a 404 instead of redirecting to the secure page. Since this extension only acts on a selection of secure pages, this failure of the IETF to configure their server correctly (sensibly) throws a spanner in the works. If the situation continues and doesn't look like it'll be fixed, I'll try and shoehorn a fix into the extension (a redirect from insecure 404s or something maybe).
-
 ## Installation:
 Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](https://chrome.google.com/webstore/detail/rfcrestyle/babdjpjkdmdppnlgjlpgiknmbdblmdbd)
 
