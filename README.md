@@ -12,7 +12,7 @@ Via the Chrome Web Store at [chrome.google.com/webstore/detail/rfcrestyle/](http
 ## Change-Log (latest first):
 * February 18, 2022 - Version 3.5.3
   * Updated to manifest_version: 3
-	* The extension now acts on rfc-editor.org .txt RFCs if the user enables auto redirect from TXT to HTML, since tools.ietf.org .txt RFCs are 302ed there
+  * Now acts on rfc-editor.org .txt RFCs if the user enables auto redirect from TXT to HTML, since tools.ietf.org .txt RFCs are 302ed there
 
 * August 27, 2021 - Version 3.5.1
   * Minor fix of ToC indent rendering
