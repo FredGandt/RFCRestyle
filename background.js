@@ -13,16 +13,14 @@ function syncronize( fnc ) {
 }
 
 chrome.runtime.onConnect.addListener( port => {
-	if ( port.name === "init" ) {
-		chrome.pageAction.show( port.sender.tab.id );
-	} else {
+	if ( port.name !== "init" ) {
 		port.onDisconnect.addListener( syncronize );
 	}
 } );
 
 chrome.runtime.onMessage.addListener( ( msg, sender ) => {
 	switch ( Object.keys( msg )[ 0 ] ) {
-		case "css": chrome.tabs.insertCSS( sender.tab.id, { "file": "init.css" } );
+		case "css": chrome.scripting.insertCSS( { "target": { tabId: sender.tab.id }, "files": [ "init.css" ] } );
 			break;
 		case "update": syncronize( ( () => chrome.tabs.update( sender.tab.id, { "url": msg.update } ) ) );
 			break;

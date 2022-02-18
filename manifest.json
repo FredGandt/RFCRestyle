@@ -1,15 +1,16 @@
 
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "RFCRestyle",
 	"description": "Control the aesthetics and improve the navigability of HTML ietf.org RFC documents. Optional automatic redirects from TXT docs.",
-	"version": "3.5.1",
+	"version": "3.5.3",
 	"offline_enabled": false,
-	"permissions": [
-		"storage",
-		"https://*.ietf.org/"
-	],
-	"page_action": {
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"action": {
 		"default_title": "Click for options",
 		"default_popup": "popup.html",
 		"default_icon": {
@@ -18,20 +19,21 @@
 			"32": "icon32.png"
 		}
 	},
-	"icons": {
-		"16": "icon16.png",
-		"48": "icon48.png",
-		"128": "icon128.png"
-	},
+	"permissions": [
+		"scripting",
+		"storage"
+	],
+	"host_permissions": [
+  	"https://*.ietf.org/",
+		"https://www.rfc-editor.org/"
+	],
 	"background": {
-		"scripts": [ "background.js" ],
-		"persistent": false
+		"service_worker": "background.js"
 	},
 	"content_scripts": [ {
 			"matches": [
 				"https://www.ietf.org/rfc/rfc*",
-				"https://tools.ietf.org/rfc/rfc*",
-				"https://tools.ietf.org/html/rfc*",
+				"https://www.rfc-editor.org/rfc/rfc*",
 				"https://datatracker.ietf.org/doc/html/rfc*"
 			],
 			"js": [ "init.js" ]
