@@ -1,14 +1,10 @@
-
 "use strict";
 
 ( function( DOC ) {
-
-	let restyled = false,
-		react_to_store_change = true;
+	let react_to_store_change = true,
+		restyled = false;
 
 	const regulariseHEXVals = num => num.toString( 16 ).padStart( 2, "0" ),
-
-		forEachObjectNames = ( obj, fnc ) => Object.getOwnPropertyNames( obj ).forEach( fnc ),
 
 		querySelect = ( what, how, where ) => ( where || DOC )[ `querySelector${ how ? "All" : "" }` ]( what ),
 
@@ -23,8 +19,9 @@
 		},
 
 		backwardsCompatibilityOne = store => {
-			forEachObjectNames( store, prop => {
-				let val = store[ prop ];
+			let val;
+			Object.getOwnPropertyNames( store ).forEach( prop => {
+				val = store[ prop ];
 				if ( typeof val === "object" ) {
 					store[ prop ] = `#${regulariseHEXVals( val.r )}${regulariseHEXVals( val.g )}${regulariseHEXVals( val.b )}`;
 				}
@@ -38,7 +35,7 @@
 		backwardsCompatibilityTwo = ( store, and_sync ) => {
 			if ( store.ul ) {
 				clearStore( chrome.storage.local );
-				forEachObjectNames( store.prfls, c => store.prfls[ c ] = Object.assign( { bcp: true }, store.prfls[ c ] ) );
+				Object.getOwnPropertyNames( store.prfls ).forEach( c => store.prfls[ c ] = Object.assign( { bcp: true }, store.prfls[ c ] ) );
 				store = {
 					sync: store.sync,
 					prfl: store.prfl,
@@ -53,99 +50,110 @@
 		},
 
 		restyle = store => {
-			let CHECK_LOCATION = /^\/rfc\/(rfc(?:[0-9]+))(?:\.txt)?$/.exec( location.pathname );
 			store = store.prfls[ store.prfl ];
+			
+			const RFC_EDITOR = /rfc-editor\.org$/.test( location.hostname ),
+				RE = new RegExp( `^\/rfc\/(rfc(?:[0-9]+))(?:\\.txt)${RFC_EDITOR ? "" : "?"}$` ),
+				CHECK_LOCATION = RE.exec( location.pathname );
 
 			if ( !!CHECK_LOCATION ) {
 				if ( store.rdrct ) {
 					chrome.runtime.sendMessage( { "update": `https://datatracker.ietf.org/doc/html/${CHECK_LOCATION[ 1 ]}` } );
 				}
-			} else if ( store.styl ) {
-				let twentieth_of_fzzy = `${store.fzzy / 20}rem`,
-					tenth_of_fzzy = `${store.fzzy / 10}rem `;
+			} else if ( !RFC_EDITOR ) {
+				if ( store.styl ) {
+					const TWENTIETH_OF_FZZY = `${store.fzzy / 20}rem`,
+						TENTH_OF_FZZY = `${store.fzzy / 10}rem `;
 
-				querySelect( "style" ).textContent = `:root{--b:0 0 ${tenth_of_fzzy}${tenth_of_fzzy}${store.bodybg};--c:${store.htmlbg};--d:${store.bodybg};--e:${store.slctn};--f:${store.nrml};--g:${store.lnk};--h:${store.vha};--i:0 0 ${twentieth_of_fzzy} 0;--j:0 0 0 ${twentieth_of_fzzy};--k:.1rem ${store.ul};--l:${twentieth_of_fzzy};--m:${tenth_of_fzzy};--n:${store.fntsz}px;--o:${store.lnkwght ? "700" : "400"}}.whitespace,.grey,.grey a:link,.grey a:visited{${store.continuous ? "display:none}.x{margin-top:1rem}pre{margin:0" : "color:" + store.lght + "}pre{margin:.4rem 0 0 0;border-top:1px dotted " + store.lght}}${store.kto ? "#toc{padding-bottom:.8rem;height:auto}" : ""}`;
+					querySelect( "style" ).textContent = `:root{--b:0 0 ${TENTH_OF_FZZY}${TENTH_OF_FZZY}${store.bodybg};--c:${store.htmlbg};--d:${store.bodybg};--e:${store.slctn};--f:${store.nrml};--g:${store.lnk};--h:${store.vha};--i:0 0 ${TWENTIETH_OF_FZZY} 0;--j:0 0 0 ${TWENTIETH_OF_FZZY};--k:.1rem ${store.ul};--l:${TWENTIETH_OF_FZZY};--m:${TENTH_OF_FZZY};--n:${store.fntsz}px;--o:${store.lnkwght ? "700" : "400"}}.whitespace,.grey,.grey a:link,.grey a:visited{${store.continuous ? "display:none}.x{margin-top:1rem}pre{margin:0" : "color:" + store.lght + "}pre{margin:.4rem 0 0 0;border-top:1px dotted " + store.lght}}${store.kto ? "#toc{padding-bottom:.8rem;height:auto}" : ""}`;
 
-				if ( !restyled ) {
-					let legend_btn = DOC.createElement( "button" ),
-						toc_btn = DOC.createElement( "button" ),
-						nav = DOC.createElement( "nav" ),
-						orig_legend = querySelect( "#legend" ),
-						orig_legend_par = orig_legend.parentElement,
-						orig_legend_prev_sib = orig_legend.previousElementSibling,
+					if ( !restyled ) {
+						const LEGEND_BTN = DOC.createElement( "button" ),
+							TOC_BTN = DOC.createElement( "button" ),
+							NAV = DOC.createElement( "nav" ),
+							ORIG_LEGEND = querySelect( "#legend" ),
+							ORIG_LEGEND_PAR = ORIG_LEGEND.parentElement,
+							ORIG_LEGEND_PREV_SIB = ORIG_LEGEND.previousElementSibling,
 
-						isTextNode = node => node.nodeType === 3,
+							isTextNode = node => node.nodeType === 3,
 
-						addLinkToNav = ( anchor_txt, addr, is_top ) => {
-							let anchor = DOC.createElement( "a" ),
-								indent = anchor_txt.match( /^[0-9\.]+/g );
-							anchor.textContent = anchor_txt;
-							anchor.href = addr;
-							if ( !is_top && indent ) {
-								anchor.style.marginLeft = `${indent[ 0 ].match( /[0-9]+/g ).length}ch`;
-							}
-							nav.appendChild( anchor );
-						},
-
-						encapsulateWhitespace = ( elmnt, reg_ex ) => {
-							if ( isTextNode( elmnt ) ) {
-								let span = DOC.createElement( "span" ), txt_or_span;
-								elmnt.textContent.split( reg_ex ).forEach( chunk_of_txt => {
-									txt_or_span = DOC.createTextNode( chunk_of_txt );
-									if ( reg_ex.test( chunk_of_txt ) ) {
-										txt_or_span = DOC.createElement( "span" );
-										txt_or_span.classList.add( "whitespace" );
-										txt_or_span.textContent = chunk_of_txt;
-									}
-									span.appendChild( txt_or_span );
-								} );
-								elmnt.parentNode.replaceChild( span, elmnt );
-							}
-						};
-
-					chrome.runtime.sendMessage( { "css": true }, () => {
-						legend_btn.setAttribute( "class", orig_legend_prev_sib.getAttribute( "class" ) );
-						legend_btn.title = orig_legend_prev_sib.title;
-						orig_legend_par.innerHTML = querySelect( "script[type]:not([src])" ).textContent.replace( /\\+/g, "" ).match( /Colou?r legend[^"]+/ );
-						orig_legend_par.title = "";
-						orig_legend_par.id = "legend";
-						orig_legend_par.removeAttribute( "style" );
-						orig_legend_par.setAttribute( "tabindex", 0 );
-						orig_legend_par.setAttribute( "class", orig_legend.getAttribute( "class" ) );
-						orig_legend_par.parentElement.insertBefore( legend_btn, orig_legend_par );
-						legend_btn.setAttribute( "accesskey", "l" );
-						legend_btn.textContent = "Color legend ( alt+L )";
-						legend_btn.appendChild( orig_legend_par );
-						toc_btn.id = "toc";
-						toc_btn.setAttribute( "accesskey", "t" );
-						toc_btn.textContent = "Table of contents ( alt+T )";
-						addLinkToNav( "Top", "#legend", true );
-						toc_btn.appendChild( nav );
-						toc_btn.addEventListener( "blur", () => toc_btn.classList.remove( "open" ) );
-						DOC.addEventListener( "focusin", evt => toc_btn.classList.toggle( "open", ~evt.path.indexOf( toc_btn ) ) );
-						DOC.body.insertBefore( toc_btn, querySelect( ".content" ) );
-						querySelect( "pre", true ).forEach( pre => {
-							let pre_first_child = pre.firstElementChild,
-								pre_second_child = pre_first_child.nextSibling;
-							if ( pre.classList.contains( "newpage" ) ) {
-								if ( isTextNode( pre_second_child ) && pre_second_child.textContent.length === 1 ) {
-									pre.removeChild( pre_second_child );
+							addLinkToNav = ( anchor_txt, addr, is_top ) => {
+								const ANCHOR = DOC.createElement( "a" ),
+									INDENT = anchor_txt.match( /^[0-9\.]+/g );
+									ANCHOR.textContent = anchor_txt;
+									ANCHOR.href = addr;
+								if ( !is_top && INDENT ) {
+									ANCHOR.style.marginLeft = `${INDENT[ 0 ].match( /[0-9]+/g ).length}ch`;
 								}
-								encapsulateWhitespace( pre_first_child.nextElementSibling.nextSibling, /(^\n+|\n+$)/g );
-							}
-							encapsulateWhitespace( pre.lastElementChild.previousSibling, /(\n+$)/ );
+								NAV.append( ANCHOR );
+							},
+
+							encapsulateWhitespace = ( elmnt, reg_ex ) => {
+								if ( isTextNode( elmnt ) ) {
+									const SPAN = DOC.createElement( "span" );
+									let txt_or_span;
+									elmnt.textContent.split( reg_ex ).forEach( chunk_of_txt => {
+										if ( reg_ex.test( chunk_of_txt ) ) {
+											txt_or_span = DOC.createElement( "span" );
+											txt_or_span.classList.add( "whitespace" );
+											txt_or_span.textContent = chunk_of_txt;
+										} else {
+											txt_or_span = DOC.createTextNode( chunk_of_txt );
+										}
+										SPAN.append( txt_or_span );
+									} );
+									elmnt.parentNode.replaceChild( SPAN, elmnt );
+								}
+							};
+
+						chrome.runtime.sendMessage( { "css": true }, () => {
+							LEGEND_BTN.setAttribute( "class", ORIG_LEGEND_PREV_SIB.getAttribute( "class" ) );
+							LEGEND_BTN.title = ORIG_LEGEND_PREV_SIB.title;
+							ORIG_LEGEND_PAR.innerHTML = querySelect( "script[type]:not([src])" ).textContent.replace( /\\+/g, "" ).match( /Colou?r legend[^"]+/ );
+							ORIG_LEGEND_PAR.title = "";
+							ORIG_LEGEND_PAR.id = "legend";
+							ORIG_LEGEND_PAR.removeAttribute( "style" );
+							ORIG_LEGEND_PAR.setAttribute( "tabindex", 0 );
+							ORIG_LEGEND_PAR.setAttribute( "class", ORIG_LEGEND.getAttribute( "class" ) );
+							ORIG_LEGEND_PAR.parentElement.insertBefore( LEGEND_BTN, ORIG_LEGEND_PAR );
+							LEGEND_BTN.setAttribute( "accesskey", "l" );
+							LEGEND_BTN.textContent = "Color legend ( alt+L )";
+							LEGEND_BTN.append( ORIG_LEGEND_PAR );
+							TOC_BTN.id = "toc";
+							TOC_BTN.setAttribute( "accesskey", "t" );
+							TOC_BTN.textContent = "Table of contents ( alt+T )";
+							addLinkToNav( "Top", "#legend", true );
+							TOC_BTN.append( NAV );
+							TOC_BTN.addEventListener( "blur", () => TOC_BTN.classList.remove( "open" ) );
+							DOC.addEventListener( "focusin", evt => TOC_BTN.classList.toggle( "open", ~evt.path.indexOf( TOC_BTN ) ) );
+							DOC.body.insertBefore( TOC_BTN, querySelect( ".content" ) );
+
+							let pre_first_child, pre_second_child;
+							querySelect( "pre", true ).forEach( pre => {
+								pre_first_child = pre.firstElementChild;
+								pre_second_child = pre_first_child.nextSibling;
+								if ( pre.classList.contains( "newpage" ) ) {
+									if ( isTextNode( pre_second_child ) && pre_second_child.textContent.length === 1 ) {
+										pre_second_child.remove();
+									}
+									encapsulateWhitespace( pre_first_child.nextElementSibling.nextSibling, /(^\n+|\n+$)/g );
+								}
+								encapsulateWhitespace( pre.lastElementChild.previousSibling, /(\n+$)/ );
+							} );
+
+							querySelect( ".h1,.h2,.h3,.h4,.h5,.h6", true ).forEach( heading => {
+								let selflink = querySelect( "a.selflink", false, heading );
+								if ( selflink ) {
+									addLinkToNav( heading.textContent, selflink.href );
+								}
+							} );
+
 						} );
-						querySelect( ".h1,.h2,.h3,.h4,.h5,.h6", true ).forEach( heading => {
-							let selflink = querySelect( "a.selflink", false, heading );
-							if ( selflink ) {
-								addLinkToNav( heading.textContent, selflink.href );
-							}
-						} );
-					} );
-					restyled = true;
+						restyled = true;
+					}
+				} else if ( restyled ) {
+					chrome.runtime.sendMessage( { arbitrary_prop_name: true } );
 				}
-			} else if ( restyled ) {
-				chrome.runtime.sendMessage( { arbitrary_prop_name: true } );
 			}
 		},
 

@@ -2,8 +2,8 @@
 {
 	"manifest_version": 3,
 	"name": "RFCRestyle",
-	"description": "Control the aesthetics and improve the navigability of HTML ietf.org RFC documents. Optional automatic redirects from TXT docs.",
-	"version": "3.5.3",
+	"description": "Control the aesthetics and improve the navigability of HTML IETF RFC documents. Optional automatic redirects from TXT docs.",
+	"version": "3.6.0",
 	"offline_enabled": false,
 	"icons": {
 		"16": "icon16.png",
