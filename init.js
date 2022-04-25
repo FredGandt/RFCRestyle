@@ -222,9 +222,3 @@
 	initRestyling( true );
 
 } ( document ) );
-
-/*
-
-Color legend:<table><tr><td>Unknown:</td><td><span class="bgwhite">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Draft:</td><td><span class="bgred">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Informational:</td><td><span class="bgorange">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Experimental:</td><td><span class="bgyellow">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Best Common Practice:</td><td><span class="bgmagenta">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Proposed Standard:</td><td><span class="bgblue">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Draft Standard (old designation):</td><td><span class="bgcyan">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Internet Standard:</td><td><span class="bggreen">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Historic:</td><td><span class="bggrey">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Obsolete:</td><td><span class="bgbrown">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr></table>
-
-*/
