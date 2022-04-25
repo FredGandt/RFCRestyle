@@ -51,7 +51,7 @@
 
 		restyle = store => {
 			store = store.prfls[ store.prfl ];
-			
+
 			const RFC_EDITOR = /rfc-editor\.org$/.test( location.hostname ),
 				RE = new RegExp( `^\/rfc\/(rfc(?:[0-9]+))(?:\\.txt)${RFC_EDITOR ? "" : "?"}$` ),
 				CHECK_LOCATION = RE.exec( location.pathname );
@@ -109,13 +109,13 @@
 						chrome.runtime.sendMessage( { "css": true }, () => {
 							LEGEND_BTN.setAttribute( "class", ORIG_LEGEND_PREV_SIB.getAttribute( "class" ) );
 							LEGEND_BTN.title = ORIG_LEGEND_PREV_SIB.title;
-							ORIG_LEGEND_PAR.innerHTML = querySelect( "script[type]:not([src])" ).textContent.replace( /\\+/g, "" ).match( /Colou?r legend[^"]+/ );
+							ORIG_LEGEND_PAR.innerHTML = querySelect( "script:not([type],[src])" )?.textContent.replace( /\\+/g, "" ).match( /C[^']+/ )[ 0 ];
 							ORIG_LEGEND_PAR.title = "";
 							ORIG_LEGEND_PAR.id = "legend";
 							ORIG_LEGEND_PAR.removeAttribute( "style" );
 							ORIG_LEGEND_PAR.setAttribute( "tabindex", 0 );
 							ORIG_LEGEND_PAR.setAttribute( "class", ORIG_LEGEND.getAttribute( "class" ) );
-							ORIG_LEGEND_PAR.parentElement.insertBefore( LEGEND_BTN, ORIG_LEGEND_PAR );
+							ORIG_LEGEND_PAR.before( LEGEND_BTN );
 							LEGEND_BTN.setAttribute( "accesskey", "l" );
 							LEGEND_BTN.textContent = "Color legend ( alt+L )";
 							LEGEND_BTN.append( ORIG_LEGEND_PAR );
@@ -126,7 +126,7 @@
 							TOC_BTN.append( NAV );
 							TOC_BTN.addEventListener( "blur", () => TOC_BTN.classList.remove( "open" ) );
 							DOC.addEventListener( "focusin", evt => TOC_BTN.classList.toggle( "open", ~evt.path.indexOf( TOC_BTN ) ) );
-							DOC.body.insertBefore( TOC_BTN, querySelect( ".content" ) );
+							querySelect( ".content" ).before( TOC_BTN );
 
 							let pre_first_child, pre_second_child;
 							querySelect( "pre", true ).forEach( pre => {
@@ -222,3 +222,9 @@
 	initRestyling( true );
 
 } ( document ) );
+
+/*
+
+Color legend:<table><tr><td>Unknown:</td><td><span class="bgwhite">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Draft:</td><td><span class="bgred">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Informational:</td><td><span class="bgorange">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Experimental:</td><td><span class="bgyellow">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Best Common Practice:</td><td><span class="bgmagenta">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Proposed Standard:</td><td><span class="bgblue">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Draft Standard (old designation):</td><td><span class="bgcyan">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Internet Standard:</td><td><span class="bggreen">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Historic:</td><td><span class="bggrey">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td>Obsolete:</td><td><span class="bgbrown">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr></table>
+
+*/
