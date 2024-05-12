@@ -1,3 +1,6 @@
+>[!IMPORTANT]
+>This project is abandoned and will reveive no further updates.
+
 # RFCRestyle
 An open source Chrome extension, first published on the Chrome Web Store in early 2013, that restyles ietf.org RFC documents for reading comfort.
 
